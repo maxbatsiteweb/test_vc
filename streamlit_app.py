@@ -30,7 +30,6 @@ message.attach(MIMEText(body, "plain"))
 
 filename = "document.pdf"  # In same directory as script
 
-print(os.listdir())
 
 # Open PDF file in binary mode
 with open(filename, "rb") as attachment:
@@ -55,8 +54,8 @@ text = message.as_string()
 # Log in to server using secure context and send email
 context = ssl.create_default_context()
 
-print(sender_email)
-print(password)
+
+
 
 with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
     server.login(sender_email, password)
