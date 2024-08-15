@@ -16,7 +16,7 @@ subject = "An email with attachment from Python"
 body = "This is an email with attachment sent from Python"
 sender_email = "maximebataille95@gmail.com"
 receiver_email = "maximebataille.trailrunning@gmail.com"
-password = input("Type your password and press enter:")
+password = "upqm tezg vljv zhuh"
 
 # Create a multipart message and set headers
 message = MIMEMultipart()
@@ -29,6 +29,8 @@ message["Bcc"] = receiver_email  # Recommended for mass emails
 message.attach(MIMEText(body, "plain"))
 
 filename = "document.pdf"  # In same directory as script
+
+print(os.listdir())
 
 # Open PDF file in binary mode
 with open(filename, "rb") as attachment:
@@ -52,6 +54,10 @@ text = message.as_string()
 
 # Log in to server using secure context and send email
 context = ssl.create_default_context()
+
+print(sender_email)
+print(password)
+
 with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
     server.login(sender_email, password)
     server.sendmail(sender_email, receiver_email, text)
