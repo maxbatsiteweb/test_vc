@@ -18,10 +18,6 @@ st.write("The current movie title is", receiver_email)
 # Fonction pour ajouter un nouveau champ d'input
 def add_input():
     st.session_state.input_count += 1
-    # Initialiser le nouveau champ d'input
-    st.session_state[f'input_hour_{st.session_state.input_count}'] = ""
-    st.session_state[f'input_min_{st.session_state.input_count}'] = ""
-    st.session_state[f'input_sec_{st.session_state.input_count}'] = ""
 
 def add_input_time(id, init=False):
     if init:
