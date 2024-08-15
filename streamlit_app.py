@@ -37,8 +37,6 @@ def add_input_time(id, init=FALSE):
         st.number_input("Secondes", key=f'input_sec_{id}')
     
 
-def write_input_time
-
 # Par défaut, on commence avec 2 champs
 if 'input_count' not in st.session_state:
     st.session_state.input_count = 2
