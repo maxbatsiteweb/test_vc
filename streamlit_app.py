@@ -9,7 +9,7 @@ receiver_email = st.text_input("Ton Email")
 st.write("The current movie title is", receiver_email)
 
 
-race_1 = st.time_input("Ton temps sur 10 000", step=0:00:01)
+race_1 = st.time_input("Ton temps sur 10 000", step=timedelta(seconds=1))
 st.write("race_1", race_1)
 
 race_2 = st.time_input("Ton temps sur Semi")
