@@ -16,45 +16,6 @@ st.write("The current movie title is", receiver_email)
 ### TEST
 
 import streamlit as st
-
-# Fonction pour afficher les inputs pour une course
-def course_input_block(course_name):
-    st.write(f"## {course_name}")
-
-    distance = st.number_input(f"Distance de la {course_name} (en km)", min_value=0, value=0)
-
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        heures = st.number_input(f"Heures", min_value=0, max_value=23, value=0, key=f"{course_name}_heures")
-    with col2:
-        minutes = st.number_input(f"Minutes", min_value=0, max_value=59, value=0, key=f"{course_name}_minutes")
-    with col3:
-        secondes = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course_name}_secondes")
-    
-    return distance, heures, minutes, secondes
-
-# Affichage des deux blocs d'input
-st.write("# Informations sur les courses")
-
-st.write("### Course 1")
-distance_1, heures_1, minutes_1, secondes_1 = course_input_block("Course 1")
-
-st.write("### Course 2")
-distance_2, heures_2, minutes_2, secondes_2 = course_input_block("Course 2")
-
-# Calcul du temps total pour chaque course en secondes
-total_seconds_course_1 = heures_1 * 3600 + minutes_1 * 60 + secondes_1
-total_seconds_course_2 = heures_2 * 3600 + minutes_2 * 60 + secondes_2
-
-# Affichage des résultats
-st.write("## Résultats des courses")
-st.write(f"Temps total de la Course 1 : {heures_1} heures, {minutes_1} minutes et {secondes_1} secondes.")
-st.write(f"Temps total de la Course 2 : {heures_2} heures, {minutes_2} minutes et {secondes_2} secondes.")
-
-
-
-import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
@@ -129,6 +90,7 @@ st.pyplot(plt)
 # Afficher les constantes optimisées E et S
 st.write(f"Constante E optimisée : {E_opt:.4f}")
 st.write(f"Constante S optimisée : {S_opt:.4f}")
+
 
 
 ### Partie Mail
