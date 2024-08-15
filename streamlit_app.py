@@ -23,23 +23,31 @@ if 'input_count' not in st.session_state:
 def add_input():
     st.session_state.input_count += 1
 
+# Fonction pour supprimer le dernier champ d'input
+def remove_input():
+    if st.session_state.input_count > 1:
+        st.session_state.input_count -= 1
+        # Supprimer le dernier champ d'input
+        st.session_state.pop(f'input_{st.session_state.input_count}')
+
 # Afficher les champs d'input
 st.write("Entrez les valeurs :")
 for i in range(st.session_state.input_count):
     st.text_input(f'Input {i + 1}', key=f'input_{i}')
 
-
+# Boutons pour ajouter ou supprimer un champ d'input
+col1, col2 = st.columns(2)
+with col1:
+    if st.button('Ajouter un champ'):
+        add_input()
+with col2:
+    if st.button('Supprimer le dernier champ'):
+        remove_input()
 
 # Afficher les valeurs saisies
 st.write("Les valeurs saisies :")
 for i in range(st.session_state.input_count):
     st.write(f"Input {i + 1}: {st.session_state[f'input_{i}']}")
-
-
-# Bouton pour ajouter un nouveau champ d'input
-if st.button('Ajouter un champ'):
-    add_input()
-
 
 
 
