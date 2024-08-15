@@ -15,39 +15,42 @@ st.write("The current movie title is", receiver_email)
 
 ### TEST
 
-# Initialiser le nombre de champs dans session_state
-if 'input_count' not in st.session_state:
-    st.session_state.input_count = 3  # Par défaut, on commence avec 3 champs
+import streamlit as st
 
-# Fonction pour ajouter un nouveau champ d'input
-def add_input():
-    st.session_state.input_count += 1
+# Fonction pour afficher les inputs pour une course
+def course_input_block(course_name):
+    st.write(f"## {course_name}")
 
-# Fonction pour supprimer le dernier champ d'input
-def remove_input():
-    if st.session_state.input_count > 1:
-        st.session_state.input_count -= 1
-        # Supprimer le dernier champ d'input
-        st.session_state.pop(f'input_{st.session_state.input_count}')
+    distance = st.number_input(f"Distance de la {course_name} (en km)", min_value=0, value=0)
 
-# Afficher les champs d'input
-st.write("Entrez les valeurs :")
-for i in range(st.session_state.input_count):
-    st.text_input(f'Input {i + 1}', key=f'input_{i}')
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        heures = st.number_input(f"Heures", min_value=0, max_value=23, value=0, key=f"{course_name}_heures")
+    with col2:
+        minutes = st.number_input(f"Minutes", min_value=0, max_value=59, value=0, key=f"{course_name}_minutes")
+    with col3:
+        secondes = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course_name}_secondes")
+    
+    return distance, heures, minutes, secondes
 
-# Boutons pour ajouter ou supprimer un champ d'input
-col1, col2 = st.columns(2)
-with col1:
-    if st.button('Ajouter un champ'):
-        add_input()
-with col2:
-    if st.button('Supprimer le dernier champ'):
-        remove_input()
+# Affichage des deux blocs d'input
+st.write("# Informations sur les courses")
 
-# Afficher les valeurs saisies
-st.write("Les valeurs saisies :")
-for i in range(st.session_state.input_count):
-    st.write(f"Input {i + 1}: {st.session_state[f'input_{i}']}")
+st.write("### Course 1")
+distance_1, heures_1, minutes_1, secondes_1 = course_input_block("Course 1")
+
+st.write("### Course 2")
+distance_2, heures_2, minutes_2, secondes_2 = course_input_block("Course 2")
+
+# Calcul du temps total pour chaque course en secondes
+total_seconds_course_1 = heures_1 * 3600 + minutes_1 * 60 + secondes_1
+total_seconds_course_2 = heures_2 * 3600 + minutes_2 * 60 + secondes_2
+
+# Affichage des résultats
+st.write("## Résultats des courses")
+st.write(f"Temps total de la Course 1 : {heures_1} heures, {minutes_1} minutes et {secondes_1} secondes.")
+st.write(f"Temps total de la Course 2 : {heures_2} heures, {minutes_2} minutes et {secondes_2} secondes.")
 
 
 
