@@ -15,8 +15,13 @@ race_1_min = st.number_input("Minutes", min_value=0, max_value=59)
 race_1_sec = st.number_input("Secondes", min_value=0, max_value=59)
 
 st.write("Heures", race_1_hour)
-st.write("Minutes", race_2_hour)
-st.write("Secondes", race_3_hour)
+st.write("Minutes", race_1_min)
+st.write("Secondes", race_1_sec)
+
+race_2_hour = st.number_input("Heures", min_value=0, max_value=23)
+race_2_min = st.number_input("Minutes", min_value=0, max_value=59)
+race_2_sec = st.number_input("Secondes", min_value=0, max_value=59)
+
 
 
 
