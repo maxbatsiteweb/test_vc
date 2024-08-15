@@ -48,15 +48,6 @@ if st.button('Ajouter une course'):
     add_input()
     add_input_time(id=st.session_state.input_count)
 
-# Afficher les champs d'input
-st.write( st.session_state.input_count)
-for i in range(st.session_state.input_count):
-    st.write(i)
-    st.number_input("Heures", key=f'input_hour_{i}')
-    st.number_input("Minutes", key=f'input_min_{i}')
-    st.number_input("Secondes", key=f'input_sec_{i}')
-
-
 
 # Afficher les valeurs saisies
 st.write("Les valeurs saisies :")
