@@ -15,6 +15,7 @@ st.write("The current movie title is", receiver_email)
 
 ### TEST
 
+
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
@@ -24,7 +25,8 @@ from scipy.optimize import curve_fit
 def course_input_block(course_name):
     st.write(f"## {course_name}")
 
-    distance = st.number_input(f"Distance de la {course_name} (en km)", min_value=0, value=0)
+    # Distance en mètres dans les inputs
+    distance = st.number_input(f"Distance de la {course_name} (en mètres)", min_value=0, value=0)
 
     col1, col2, col3 = st.columns(3)
     
@@ -46,79 +48,7 @@ distance_1, heures_1, minutes_1, secondes_1 = course_input_block("Course 1")
 st.write("### Course 2")
 distance_2, heures_2, minutes_2, secondes_2 = course_input_block("Course 2")
 
-# Calcul du temps total pour chaque course en secondes
-total_seconds_course_1 = heures_1 * 3600 + minutes_1 * 60 + secondes_1
-total_seconds_course_2 = heures_2 * 3600 + minutes_2 * 60 + secondes_2
-
-# Calcul des vitesses en m/s (Distance en mètres / Temps en secondes)
-vitesse_1 = (distance_1 * 1000) / total_seconds_course_1
-vitesse_2 = (distance_2 * 1000) / total_seconds_course_2
-
-# Affichage des résultats
-st.write("## Résultats des courses")
-st.write(f"Temps total de la Course 1 : {heures_1} heures, {minutes_1} minutes et {secondes_1} secondes.")
-st.write(f"Vitesse moyenne de la Course 1 : {vitesse_1:.2f} m/s")
-st.write(f"Temps total de la Course 2 : {heures_2} heures, {minutes_2} minutes et {secondes_2} secondes.")
-st.write(f"Vitesse moyenne de la Course 2 : {vitesse_2:.2f} m/s")
-
-# Nuage de points (Temps vs Vitesse)
-times = np.array([total_seconds_course_1, total_seconds_course_2])
-speeds = np.array([vitesse_1, vitesse_2])
-
-plt.figure(figsize=(10, 6))
-plt.scatter(times, speeds, color='blue', label='Données')
-
-# Définir la relation ln(v) = (E-1)ln(T) + ln(S)
-def model(T, E, S):
-    return np.exp((E-1) * np.log(T) + np.log(S))
-
-# Ajuster le modèle aux données pour déterminer les constantes E et S
-popt, _ = curve_fit(model, times, speeds)
-E_opt, S_opt = popt
-
-# Tracer la régression linéaire
-T_fit = np.arange(0, 15001, 100)
-v_fit = model(T_fit, E_opt, S_opt)
-
-# Distances en mètres
-distances_km = [5, 10, 21.1, 42.2]
-distances_m = np.array(distances_km) * 1000
-
-# Calcul du temps pour chaque distance avec les vitesses issues de la régression
-T_points = distances_m / v_fit[-1]  # Utiliser la vitesse correspondant à la fin de la courbe de régression
-v_points = model(T_points, E_opt, S_opt)
-
-plt.plot(T_fit, v_fit, color='red', label='Régression linéaire')
-plt.xlabel('Temps (s)')
-plt.ylabel('Vitesse (m/s)')
-plt.title('Nuage de points et régression linéaire')
-plt.legend()
-st.pyplot(plt)
-
-# Afficher les constantes optimisées E et S
-st.write(f"Constante E optimisée : {E_opt:.4f}")
-st.write(f"Constante S optimisée : {S_opt:.4f}")
-
-# Ajout d'un deuxième graphique : Distance en mètres vs Temps en secondes basé sur la courbe de régression
-plt.figure(figsize=(10, 6))
-
-# Relation distance (m) vs temps (s) basé sur la courbe de régression
-distances_range = np.linspace(0, 45000, 1000)  # Intervalle de 0 à 45 km
-times_range = distances_range / v_fit[-1]      # Temps calculé à partir de la vitesse issue de la régression
-
-# Tracer la courbe distance vs temps
-plt.plot(distances_range, times_range, color='orange', label='Courbe régression Distance-Temps')
-
-# Tracer les points spécifiques (5km, 10km, semi-marathon, marathon)
-plt.scatter(distances_m, T_points, color='purple', label='Points spécifiques')
-for i, dist in enumerate(distances_km):
-    plt.text(distances_m[i], T_points[i], f'{dist} km', fontsize=9, verticalalignment='bottom')
-
-plt.xlabel('Distance (m)')
-plt.ylabel('Temps (s)')
-plt.title('Relation entre la Distance et le Temps')
-plt.legend()
-st.pyplot(plt)
+# Calcul du temps total
 
 
 
