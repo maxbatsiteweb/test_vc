@@ -10,11 +10,14 @@ receiver_email = st.text_input("Ton Email")
 st.write("The current movie title is", receiver_email)
 
 
-race_1 = st.time_input("Ton temps sur 10 000", step=timedelta(seconds=1))
-st.write("race_1", race_1)
+race_1_hour = st.number_input("Heures", min_value=0, max_value=23)
+race_1_min = st.number_input("Minutes", min_value=0, max_value=59)
+race_1_sec = st.number_input("Secondes", min_value=0, max_value=59)
 
-race_2 = st.time_input("Ton temps sur Semi")
-st.write("race_2", race_2)
+st.write("Heures", race_1_hour)
+st.write("Minutes", race_2_hour)
+st.write("Secondes", race_3_hour)
+
 
 
 ### Partie Mail
