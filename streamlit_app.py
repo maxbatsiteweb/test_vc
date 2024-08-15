@@ -26,11 +26,11 @@ def add_input():
 def add_input_time(id, init=False):
     if init:
         for i in range(id):
-            st.write(i)
             st.number_input("Heures", key=f'input_hour_{i}')
             st.number_input("Minutes", key=f'input_min_{i}')
             st.number_input("Secondes", key=f'input_sec_{i}')
     else:
+        st.write("test")
         st.write(id)
         st.number_input("Heures", key=f'input_hour_{id}')
         st.number_input("Minutes", key=f'input_min_{id}')
