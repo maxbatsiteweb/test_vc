@@ -9,15 +9,6 @@ st.write(
 receiver_email = st.text_input("Ton Email")
 st.write("The current movie title is", receiver_email)
 
-# Initialiser le nombre de champs dans session_state
-if 'input_count' not in st.session_state:
-    st.session_state.input_count = 3  # Par défaut, on commence avec 3 champs
-
-# Fonction pour ajouter un nouveau champ d'input
-def add_input():
-    st.session_state.input_count += 1
-
-
 race_1_hour = st.number_input("Heures", min_value=0, max_value=23, key="race_1_hour")
 race_1_min = st.number_input("Minutes", min_value=0, max_value=59, key="race_1_min")
 race_1_sec = st.number_input("Secondes", min_value=0, max_value=59, key="race_1_sec")
@@ -35,16 +26,17 @@ race_2_sec = st.number_input("Secondes", min_value=0, max_value=59, key="race_2_
 ### TEST
 
 if 'input_count' not in st.session_state:
-    st.session_state.input_count = 3  # Par défaut, on commence avec 3 champs
+    st.session_state.input_count = 2  # Par défaut, on commence avec 3 champs
 
 # Fonction pour ajouter un nouveau champ d'input
 def add_input():
     st.session_state.input_count += 1
 
 # Afficher les champs d'input
-st.write("Entrez les valeurs :")
 for i in range(st.session_state.input_count):
-    st.text_input(f'Input {i + 1}', key=f'input_{i}')
+    st.number_input("Heures", key=f'input_hour_{i}')
+    st.number_input("Minutes", key=f'input_min_{i}')
+    st.number_input("Secondes", key=f'input_sec_{i}')
 
 # Bouton pour ajouter un nouveau champ d'input
 if st.button('Ajouter un champ'):
@@ -53,7 +45,9 @@ if st.button('Ajouter un champ'):
 # Afficher les valeurs saisies
 st.write("Les valeurs saisies :")
 for i in range(st.session_state.input_count):
-    st.write(f"Input {i + 1}: {st.session_state[f'input_{i}']}")
+    st.write(f"Heures: {st.session_state[f'input_hour_{i}']}")
+    st.write(f"Minutes: {st.session_state[f'input_min_{i}']}")
+    st.write(f"Secondes: {st.session_state[f'input_sec_{i}']}")
 
 
 
