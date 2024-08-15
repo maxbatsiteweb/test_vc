@@ -24,8 +24,6 @@ def add_input():
     st.session_state[f'input_sec_{st.session_state.input_count}'] = ""
 
 def add_input_time(id, init=FALSE):
-    st.write(if)
-
     if init:
         for i in range(id):
             st.write(i)
