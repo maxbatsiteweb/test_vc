@@ -22,7 +22,9 @@ if 'input_count' not in st.session_state:
 def add_input():
     st.session_state.input_count += 1
     # Initialiser le nouveau champ d'input
-    st.session_state[f'input_{st.session_state.input_count - 1}'] = ""
+    st.session_state[f'input_hour_{st.session_state.input_count - 1}'] = ""
+    st.session_state[f'input_min_{st.session_state.input_count - 1}'] = ""
+    st.session_state[f'input_sec_{st.session_state.input_count - 1}'] = ""
 
 # Afficher les champs d'input
 st.write("Entrez les valeurs :")
