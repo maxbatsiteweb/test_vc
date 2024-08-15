@@ -9,6 +9,13 @@ receiver_email = st.text_input("Ton Email")
 st.write("The current movie title is", receiver_email)
 
 
+race_1 = st.time_input("Ton temps sur 10 000")
+st.write("race_1", race_1)
+
+race_2 = st.time_input("Ton temps sur Semi")
+st.write("race_2", race_2)
+
+
 ### Partie Mail
 import email, smtplib, ssl
 
@@ -32,7 +39,7 @@ message["Bcc"] = receiver_email  # Recommended for mass emails
 # Add body to email
 message.attach(MIMEText(body, "plain"))
 
-filename = "documents.pdf"  # In same directory as script
+filename = "document.pdf"  # In same directory as script
 
 
 # Open PDF file in binary mode
