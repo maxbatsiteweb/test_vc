@@ -88,11 +88,6 @@ distances_m = np.array(distances_km) * 1000
 T_points = distances_m / v_fit[-1]  # Utiliser la vitesse correspondant à la fin de la courbe de régression
 v_points = model(T_points, E_opt, S_opt)
 
-# Tracer les points spécifiques sur la courbe de régression
-plt.scatter(T_points, v_points, color='green', label='Points spécifiques', zorder=5)
-for i, dist in enumerate(distances_km):
-    plt.text(T_points[i], v_points[i], f'{dist} km', fontsize=9, verticalalignment='bottom')
-
 plt.plot(T_fit, v_fit, color='red', label='Régression linéaire')
 plt.xlabel('Temps (s)')
 plt.ylabel('Vitesse (m/s)')
