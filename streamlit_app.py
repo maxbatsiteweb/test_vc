@@ -5,6 +5,11 @@ st.write(
     "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 )
 
+receiver_email = st.text_input("Ton Email")
+st.write("The current movie title is", receiver_email)
+
+
+### Partie Mail
 import email, smtplib, ssl
 
 from email import encoders
@@ -15,7 +20,6 @@ from email.mime.text import MIMEText
 subject = "An email with attachment from Python"
 body = "This is an email with attachment sent from Python"
 sender_email = "maximebataille95@gmail.com"
-receiver_email = "maximebataille.trailrunning@gmail.com"
 password = "upqm tezg vljv zhuh"
 
 # Create a multipart message and set headers
@@ -55,8 +59,10 @@ text = message.as_string()
 context = ssl.create_default_context()
 
 
-
-
+### Provisoire
+'''
 with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
     server.login(sender_email, password)
     server.sendmail(sender_email, receiver_email, text)
+
+'''
