@@ -54,6 +54,83 @@ st.write(f"Temps total de la Course 2 : {heures_2} heures, {minutes_2} minutes e
 
 
 
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+
+# Fonction pour afficher les inputs pour une course
+def course_input_block(course_name):
+    st.write(f"## {course_name}")
+
+    distance = st.number_input(f"Distance de la {course_name} (en km)", min_value=0, value=0)
+
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        heures = st.number_input(f"Heures", min_value=0, max_value=23, value=0, key=f"{course_name}_heures")
+    with col2:
+        minutes = st.number_input(f"Minutes", min_value=0, max_value=59, value=0, key=f"{course_name}_minutes")
+    with col3:
+        secondes = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course_name}_secondes")
+    
+    return distance, heures, minutes, secondes
+
+# Affichage des deux blocs d'input
+st.write("# Informations sur les courses")
+
+st.write("### Course 1")
+distance_1, heures_1, minutes_1, secondes_1 = course_input_block("Course 1")
+
+st.write("### Course 2")
+distance_2, heures_2, minutes_2, secondes_2 = course_input_block("Course 2")
+
+# Calcul du temps total pour chaque course en secondes
+total_seconds_course_1 = heures_1 * 3600 + minutes_1 * 60 + secondes_1
+total_seconds_course_2 = heures_2 * 3600 + minutes_2 * 60 + secondes_2
+
+# Calcul des vitesses en m/s (Distance en mètres / Temps en secondes)
+vitesse_1 = (distance_1 * 1000) / total_seconds_course_1
+vitesse_2 = (distance_2 * 1000) / total_seconds_course_2
+
+# Affichage des résultats
+st.write("## Résultats des courses")
+st.write(f"Temps total de la Course 1 : {heures_1} heures, {minutes_1} minutes et {secondes_1} secondes.")
+st.write(f"Vitesse moyenne de la Course 1 : {vitesse_1:.2f} m/s")
+st.write(f"Temps total de la Course 2 : {heures_2} heures, {minutes_2} minutes et {secondes_2} secondes.")
+st.write(f"Vitesse moyenne de la Course 2 : {vitesse_2:.2f} m/s")
+
+# Nuage de points (Temps vs Vitesse)
+times = np.array([total_seconds_course_1, total_seconds_course_2])
+speeds = np.array([vitesse_1, vitesse_2])
+
+plt.figure(figsize=(10, 6))
+plt.scatter(times, speeds, color='blue', label='Données')
+
+# Définir la relation ln(v) = (E-1)ln(T) + ln(S)
+def model(T, E, S):
+    return np.exp((E-1) * np.log(T) + np.log(S))
+
+# Ajuster le modèle aux données pour déterminer les constantes E et S
+popt, _ = curve_fit(model, times, speeds)
+E_opt, S_opt = popt
+
+# Tracer la régression linéaire
+T_fit = np.arange(0, 15001, 100)
+v_fit = model(T_fit, E_opt, S_opt)
+plt.plot(T_fit, v_fit, color='red', label='Régression linéaire')
+
+plt.xlabel('Temps (s)')
+plt.ylabel('Vitesse (m/s)')
+plt.title('Nuage de points et régression linéaire')
+plt.legend()
+st.pyplot(plt)
+
+# Afficher les constantes optimisées E et S
+st.write(f"Constante E optimisée : {E_opt:.4f}")
+st.write(f"Constante S optimisée : {S_opt:.4f}")
+
+
 ### Partie Mail
 import email, smtplib, ssl
 
