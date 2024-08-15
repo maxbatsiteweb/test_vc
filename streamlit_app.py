@@ -28,9 +28,9 @@ def add_input_time(id, init=False):
     else:
         st.write("test")
         st.write(id)
-        st.number_input("Heures", key=4)
-        st.number_input("Minutes", key=19)
-        st.number_input("Secondes", key=20)
+        st.number_input("Heures", key=f'input_hour_{id}')
+        st.number_input("Minutes", key=f'input_hour_{id}')
+        st.number_input("Secondes", key=f'input_hour_{id}')
         st.write(id)
         st.write("test terminé")
     
