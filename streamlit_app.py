@@ -41,8 +41,7 @@ def add_input_time(id, init=False):
 if 'input_count' not in st.session_state:
     st.session_state.input_count = 2
 
-for i in range(st.session_state.input_count):
-    add_input_time(id=i, init=True)
+add_input_time(id=st.session_state.input_count, init=True)
 
 # Bouton pour ajouter un nouveau champ d'input
 if st.button('Ajouter une course'):
