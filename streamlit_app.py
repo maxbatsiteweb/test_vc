@@ -18,17 +18,16 @@ st.write("The current movie title is", receiver_email)
 if 'input_count' not in st.session_state:
     st.session_state.input_count = 2  # Par défaut, on commence avec 3 champs
 
-# Initialiser chaque champ d'input dans session_state si ce n'est pas déjà fait
-for i in range(st.session_state.input_count):
-    key = f'input_{i}'
-    if key not in st.session_state:
-        st.session_state[key] = ""
-
 # Fonction pour ajouter un nouveau champ d'input
 def add_input():
     st.session_state.input_count += 1
     # Initialiser le nouveau champ d'input
     st.session_state[f'input_{st.session_state.input_count - 1}'] = ""
+
+# Afficher les champs d'input
+st.write("Entrez les valeurs :")
+for i in range(st.session_state.input_count):
+    st.text_input(f'Input {i + 1}', key=f'input_{i}')
 
 # Afficher les champs d'input
 st.write( st.session_state.input_count)
