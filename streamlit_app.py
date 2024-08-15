@@ -24,6 +24,7 @@ def add_input():
 
 # Afficher les champs d'input
 for i in range(st.session_state.input_count):
+    st.write(i)
     st.number_input("Heures", key=f'input_hour_{i}')
     st.number_input("Minutes", key=f'input_min_{i}')
     st.number_input("Secondes", key=f'input_sec_{i}')
