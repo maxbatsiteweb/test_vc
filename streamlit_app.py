@@ -28,14 +28,17 @@ st.write("Entrez les valeurs :")
 for i in range(st.session_state.input_count):
     st.text_input(f'Input {i + 1}', key=f'input_{i}')
 
-# Bouton pour ajouter un nouveau champ d'input
-if st.button('Ajouter un champ'):
-    add_input()
+
 
 # Afficher les valeurs saisies
 st.write("Les valeurs saisies :")
 for i in range(st.session_state.input_count):
     st.write(f"Input {i + 1}: {st.session_state[f'input_{i}']}")
+
+
+# Bouton pour ajouter un nouveau champ d'input
+if st.button('Ajouter un champ'):
+    add_input()
 
 
 
