@@ -32,9 +32,6 @@ def calculate_speed(distance, hours, minutes, seconds):
 st.write("# Choix des courses")
 
 # Utilisation des colonnes pour afficher les inputs côte à côte
-
-st.write("# Choix des courses")
-
 # Course 1
 col1, col2, col3, col4 = st.columns(4)
 with col1:
@@ -85,11 +82,13 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     # Calcul des paramètres E et S
     E_opt = a + 1
     S_opt = np.exp(b)
-    
-    # Affichage des résultats
-    st.write("## Résultats de la régression linéaire")
-    st.write(f"Constante E : {E_opt:.4f}")
-    st.write(f"Constante S : {S_opt:.4f}")
+
+    # Affichage des temps et vitesses
+    st.write("## Détails des courses")
+    st.write(f"Course 1 : {distances_options[distance_1] / 1000:.1f} km en {hours_1} heures, {minutes_1} minutes, {seconds_1} secondes.")
+    st.write(f"Vitesse moyenne de la Course 1 : {speed_1:.2f} m/s")
+    st.write(f"Course 2 : {distances_options[distance_2] / 1000:.1f} km en {hours_2} heures, {minutes_2} minutes, {seconds_2} secondes.")
+    st.write(f"Vitesse moyenne de la Course 2 : {speed_2:.2f} m/s")
     
     # Prédictions pour les distances spécifiées
     st.write("## Prédictions pour d'autres distances")
@@ -101,13 +100,11 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         minutes, seconds = divmod(remainder, 60)
         predictions[dist_name] = f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
         st.write(f"{dist_name} : {predictions[dist_name]}")
-    
-    # Affichage des temps et vitesses
-    st.write("## Détails des courses")
-    st.write(f"Course 1 : {distances_options[distance_1] / 1000:.1f} km en {hours_1} heures, {minutes_1} minutes, {seconds_1} secondes.")
-    st.write(f"Vitesse moyenne de la Course 1 : {speed_1:.2f} m/s")
-    st.write(f"Course 2 : {distances_options[distance_2] / 1000:.1f} km en {hours_2} heures, {minutes_2} minutes, {seconds_2} secondes.")
-    st.write(f"Vitesse moyenne de la Course 2 : {speed_2:.2f} m/s")
+
+    # Affichage des résultats
+    st.write("## Résultats de la régression linéaire")
+    st.write(f"Constante E : {E_opt:.4f}")
+    st.write(f"Constante S : {S_opt:.4f}")
 
 else:
     st.write("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
