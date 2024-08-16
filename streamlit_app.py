@@ -70,13 +70,6 @@ def calculate_speed_safe(distance, hours, minutes, seconds):
 speed_1, total_seconds_1 = calculate_speed_safe(distances_options[distance_1], hours_1, minutes_1, seconds_1)
 speed_2, total_seconds_2 = calculate_speed_safe(distances_options[distance_2], hours_2, minutes_2, seconds_2)
 
-# Affichage ou utilisation des vitesses et temps uniquement si les valeurs sont valides
-if total_seconds_1 > 0 and total_seconds_2 > 0:
-    # Continuez avec la régression linéaire et les autres calculs ici
-    pass
-else:
-    st.write("Veuillez entrer des valeurs valides pour le temps de chaque course.")
-
 if total_seconds_1 > 0 and total_seconds_2 > 0:
     # Réaliser la régression linéaire avec Scikit-learn
     X = np.log(np.array([total_seconds_1, total_seconds_2])).reshape(-1, 1)
