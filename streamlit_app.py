@@ -72,7 +72,7 @@ st.write("## Prédictions pour d'autres distances")
 predictions = {}
 for dist_name, dist_value in distances_options.items():
     # Temps prédit en utilisant la relation: ln(T) = (1/E) * (ln(S) + ln(D)) + (1/E) * ln(T)
-    pred_time = np.exp((1/E_opt) * (np.log(dist_value) + np.log(S_opt)))
+    pred_time = np.exp((1/E_opt) * (np.log(dist_value) - np.log(S_opt)))
     hours, remainder = divmod(pred_time, 3600)
     minutes, seconds = divmod(remainder, 60)
     predictions[dist_name] = pred_time
