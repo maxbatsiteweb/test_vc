@@ -77,45 +77,47 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 else:
     st.write("Veuillez entrer des valeurs valides pour le temps de chaque course.")
 
+if total_seconds_1 > 0 and total_seconds_2 > 0:
+    # Réaliser la régression linéaire avec Scikit-learn
+    X = np.log(np.array([total_seconds_1, total_seconds_2])).reshape(-1, 1)
+    y = np.log(np.array([speed_1, speed_2]))
+    
+    model = LinearRegression()
+    model.fit(X, y)
+    
+    # Extraction des coefficients
+    a = model.coef_[0]
+    b = model.intercept_
+    
+    # Calcul des paramètres E et S
+    E_opt = a + 1
+    S_opt = np.exp(b)
+    
+    # Affichage des résultats
+    st.write("## Résultats de la régression linéaire")
+    st.write(f"Constante E : {E_opt:.4f}")
+    st.write(f"Constante S : {S_opt:.4f}")
+    
+    # Prédictions pour les distances spécifiées
+    st.write("## Prédictions pour d'autres distances")
+    predictions = {}
+    for dist_name, dist_value in distances_options.items():
+        # Temps prédit en utilisant la relation: ln(T) = (1/E) * (ln(S) + ln(D)) + (1/E) * ln(T)
+        pred_time = np.exp((1/E_opt) * (np.log(dist_value) - np.log(S_opt)))
+        hours, remainder = divmod(pred_time, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        predictions[dist_name] = pred_time
+        st.write(f"{dist_name} : {predictions[dist_name]}")
+    
+    # Affichage des temps et vitesses
+    st.write("## Détails des courses")
+    st.write(f"Course 1 : {distances_options[distance_1] / 1000:.1f} km en {hours_1} heures, {minutes_1} minutes, {seconds_1} secondes.")
+    st.write(f"Vitesse moyenne de la Course 1 : {speed_1:.2f} m/s")
+    st.write(f"Course 2 : {distances_options[distance_2] / 1000:.1f} km en {hours_2} heures, {minutes_2} minutes, {seconds_2} secondes.")
+    st.write(f"Vitesse moyenne de la Course 2 : {speed_2:.2f} m/s")
 
-# Réaliser la régression linéaire avec Scikit-learn
-X = np.log(np.array([total_seconds_1, total_seconds_2])).reshape(-1, 1)
-y = np.log(np.array([speed_1, speed_2]))
-
-model = LinearRegression()
-model.fit(X, y)
-
-# Extraction des coefficients
-a = model.coef_[0]
-b = model.intercept_
-
-# Calcul des paramètres E et S
-E_opt = a + 1
-S_opt = np.exp(b)
-
-# Affichage des résultats
-st.write("## Résultats de la régression linéaire")
-st.write(f"Constante E : {E_opt:.4f}")
-st.write(f"Constante S : {S_opt:.4f}")
-
-# Prédictions pour les distances spécifiées
-st.write("## Prédictions pour d'autres distances")
-predictions = {}
-for dist_name, dist_value in distances_options.items():
-    # Temps prédit en utilisant la relation: ln(T) = (1/E) * (ln(S) + ln(D)) + (1/E) * ln(T)
-    pred_time = np.exp((1/E_opt) * (np.log(dist_value) - np.log(S_opt)))
-    hours, remainder = divmod(pred_time, 3600)
-    minutes, seconds = divmod(remainder, 60)
-    predictions[dist_name] = pred_time
-    st.write(f"{dist_name} : {predictions[dist_name]}")
-
-# Affichage des temps et vitesses
-st.write("## Détails des courses")
-st.write(f"Course 1 : {distances_options[distance_1] / 1000:.1f} km en {hours_1} heures, {minutes_1} minutes, {seconds_1} secondes.")
-st.write(f"Vitesse moyenne de la Course 1 : {speed_1:.2f} m/s")
-st.write(f"Course 2 : {distances_options[distance_2] / 1000:.1f} km en {hours_2} heures, {minutes_2} minutes, {seconds_2} secondes.")
-st.write(f"Vitesse moyenne de la Course 2 : {speed_2:.2f} m/s")
-
+else:
+    st.write("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
 
 
 
