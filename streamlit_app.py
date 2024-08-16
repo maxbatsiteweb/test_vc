@@ -132,8 +132,62 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     st.write(f"Constante E : {E_opt:.4f}")
     st.write(f"Constante S : {S_opt:.4f}")
 
+
+    import matplotlib.pyplot as plt
+
+    # Convertir les temps en minutes
+    time_1_minutes = total_seconds_1 / 60
+    time_2_minutes = total_seconds_2 / 60
+    
+    # Calculer les allures en km/h
+    pace_1_kmph = 60 / (total_seconds_1 / 3600)  # 60 / allure en heures/km
+    pace_2_kmph = 60 / (total_seconds_2 / 3600)
+
+    # Temps prédit pour le 5 km et le marathon, basé sur la régression
+    pred_time_5km = np.exp((1/E_opt) * (np.log(5000) + np.log(S_opt)))
+    pred_time_marathon = np.exp((1/E_opt) * (np.log(42195) + np.log(S_opt)))
+    
+    # Convertir en minutes
+    pred_time_5km_minutes = pred_time_5km / 60
+    pred_time_marathon_minutes = pred_time_marathon / 60
+    
+    # Allure en km/h pour les prédictions
+    pace_5km_kmph = 60 / (pred_time_5km / 3600)
+    pace_marathon_kmph = 60 / (pred_time_marathon / 3600)
+
+    # Créer le graphique
+    fig, ax = plt.subplots()
+    
+    # Définir le fond du graphique en bleu
+    fig.patch.set_facecolor('blue')
+    
+    # Tracer la courbe verte (reliant les points des courses saisies)
+    ax.plot([time_1_minutes, time_2_minutes], [pace_1_kmph, pace_2_kmph], color='green')
+    
+    # Ajouter les points jaunes pour les deux courses saisies
+    ax.scatter(time_1_minutes, pace_1_kmph, color='yellow', s=100, zorder=5)  # point pour la course 1
+    ax.scatter(time_2_minutes, pace_2_kmph, color='yellow', s=100, zorder=5)  # point pour la course 2
+    
+    # Ajouter les points blancs pour les prédictions
+    ax.scatter(pred_time_5km_minutes, pace_5km_kmph, color='white', s=100, zorder=5, label='Prédiction 5 km')
+    ax.scatter(pred_time_marathon_minutes, pace_marathon_kmph, color='white', s=100, zorder=5, label='Prédiction Marathon')
+    
+    # Ajouter les labels et le titre
+    ax.set_xlabel('Temps (minutes)')
+    ax.set_ylabel('Allure (km/h)')
+    ax.set_title("Allure en fonction du temps")
+    
+    # Ajouter une légende pour clarifier les points prédits
+    ax.legend()
+    
+    # Afficher le graphique dans Streamlit
+    st.pyplot(fig)
+
 else:
     st.write("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
+
+
+
 
 
 
