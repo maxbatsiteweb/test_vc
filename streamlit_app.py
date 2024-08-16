@@ -97,18 +97,23 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         minutes, seconds = divmod(pace_seconds_per_km, 60)
         return f"{int(minutes)} min {int(seconds):02d} s / km"
 
+    # Utilisation des colonnes pour afficher les résultats côte à côte
+    # Utilisation des colonnes pour afficher les résultats côte à côte
+    col1, col2 = st.columns(2)
+    
     # Course 1
-    st.write("## Détails des courses")
-    st.write(f"### Course 1 ({distance_1})")
-    st.write(f"Temps : {format_time(total_seconds_1)}")
-    st.write(f"Vitesse : {speed_1:.2f} m/s, {(speed_1 * 3.6):.2f} km/h")
-    st.write(f"Allure : {calculate_pace(total_seconds_1, distances_options[distance_1])}")
+    with col1:
+        st.write(f"### Course 1 ({distance_1})")
+        st.write(f"Temps : {format_time(total_seconds_1)}")
+        st.write(f"Vitesse : {speed_1:.2f} m/s, {(speed_1 * 3.6):.2f} km/h")
+        st.write(f"Allure : {calculate_pace(total_seconds_1, distances_options[distance_1])}")
     
     # Course 2
-    st.write(f"### Course 2 ({distance_2})")
-    st.write(f"Temps : {format_time(total_seconds_2)}")
-    st.write(f"Vitesse : {speed_2:.2f} m/s, {(speed_2 * 3.6):.2f} km/h")
-    st.write(f"Allure : {calculate_pace(total_seconds_2, distances_options[distance_2])}")
+    with col2:
+        st.write(f"### Course 2 ({distance_2})")
+        st.write(f"Temps : {format_time(total_seconds_2)}")
+        st.write(f"Vitesse : {speed_2:.2f} m/s, {(speed_2 * 3.6):.2f} km/h")
+        st.write(f"Allure : {calculate_pace(total_seconds_2, distances_options[distance_2])}")
 
     
     # Prédictions pour les distances spécifiées
