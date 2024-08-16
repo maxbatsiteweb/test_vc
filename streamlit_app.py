@@ -75,7 +75,7 @@ for dist_name, dist_value in distances_options.items():
     pred_time = np.exp((1/E_opt) * (np.log(dist_value) + np.log(S_opt)))
     hours, remainder = divmod(pred_time, 3600)
     minutes, seconds = divmod(remainder, 60)
-    predictions[dist_name] = f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
+    predictions[dist_name] = pred_time
     st.write(f"{dist_name} : {predictions[dist_name]}")
 
 # Affichage des temps et vitesses
