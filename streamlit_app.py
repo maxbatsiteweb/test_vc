@@ -31,17 +31,32 @@ def calculate_speed(distance, hours, minutes, seconds):
 # Sélection des distances
 st.write("# Choix des courses")
 
-st.write("## Course 1")
-distance_1 = st.selectbox("Distance de la course 1", list(distances_options.keys()))
-hours_1 = st.number_input("Heures", min_value=0, max_value=23, value=0, key="heures_1")
-minutes_1 = st.number_input("Minutes", min_value=0, max_value=59, value=0, key="minutes_1")
-seconds_1 = st.number_input("Secondes", min_value=0, max_value=59, value=0, key="secondes_1")
+# Utilisation des colonnes pour afficher les inputs côte à côte
 
-st.write("## Course 2")
-distance_2 = st.selectbox("Distance de la course 2", [dist for dist in distances_options.keys() if dist != distance_1])
-hours_2 = st.number_input("Heures", min_value=0, max_value=23, value=0, key="heures_2")
-minutes_2 = st.number_input("Minutes", min_value=0, max_value=59, value=0, key="minutes_2")
-seconds_2 = st.number_input("Secondes", min_value=0, max_value=59, value=0, key="secondes_2")
+st.write("# Choix des courses")
+
+# Course 1
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    distance_1 = st.selectbox("Distance de la course 1", list(distances_options.keys()))
+with col2:
+    hours_1 = st.number_input("Heures", min_value=0, max_value=23, value=0, key="heures_1")
+with col3:
+    minutes_1 = st.number_input("Minutes", min_value=0, max_value=59, value=0, key="minutes_1")
+with col4:
+    seconds_1 = st.number_input("Secondes", min_value=0, max_value=59, value=0, key="secondes_1")
+
+# Course 2
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    distance_2 = st.selectbox("Distance de la course 2", [dist for dist in distances_options.keys() if dist != distance_1])
+with col2:
+    hours_2 = st.number_input("Heures", min_value=0, max_value=23, value=0, key="heures_2")
+with col3:
+    minutes_2 = st.number_input("Minutes", min_value=0, max_value=59, value=0, key="minutes_2")
+with col4:
+    seconds_2 = st.number_input("Secondes", min_value=0, max_value=59, value=0, key="secondes_2")
+
 
 # Calcul des vitesses et temps
 speed_1, total_seconds_1 = calculate_speed(distances_options[distance_1], hours_1, minutes_1, seconds_1)
