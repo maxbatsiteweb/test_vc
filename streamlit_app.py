@@ -85,10 +85,31 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
     # Affichage des temps et vitesses
     st.write("## Détails des courses")
-    st.write(f"Course 1 : {distances_options[distance_1] / 1000:.1f} km en {hours_1} heures, {minutes_1} minutes, {seconds_1} secondes.")
-    st.write(f"Vitesse moyenne de la Course 1 : {speed_1:.2f} m/s")
-    st.write(f"Course 2 : {distances_options[distance_2] / 1000:.1f} km en {hours_2} heures, {minutes_2} minutes, {seconds_2} secondes.")
-    st.write(f"Vitesse moyenne de la Course 2 : {speed_2:.2f} m/s")
+    # Affichage des temps, vitesses et allures pour les deux courses
+
+    def format_time(seconds):
+        hours, remainder = divmod(seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        return f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
+    
+    def calculate_pace(total_seconds, distance_meters):
+        pace_seconds_per_km = total_seconds / (distance_meters / 1000)
+        minutes, seconds = divmod(pace_seconds_per_km, 60)
+        return f"{int(minutes)} min {int(seconds):02d} s / km"
+
+    # Course 1
+    st.write("## Détails des courses")
+    st.write(f"### Course 1 ({distance_1})")
+    st.write(f"Temps : {format_time(total_seconds_1)}")
+    st.write(f"Vitesse : {speed_1:.2f} m/s, {(speed_1 * 3.6):.2f} km/h")
+    st.write(f"Allure : {calculate_pace(total_seconds_1, distances_options[distance_1])}")
+    
+    # Course 2
+    st.write(f"### Course 2 ({distance_2})")
+    st.write(f"Temps : {format_time(total_seconds_2)}")
+    st.write(f"Vitesse : {speed_2:.2f} m/s, {(speed_2 * 3.6):.2f} km/h")
+    st.write(f"Allure : {calculate_pace(total_seconds_2, distances_options[distance_2])}")
+
     
     # Prédictions pour les distances spécifiées
     st.write("## Prédictions pour d'autres distances")
