@@ -134,6 +134,17 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         receiver_name = st.text_input("Prénom")
         receiver_email = st.text_input("Email")
 
+    # Créer une case à cocher
+    checkbox = st.checkbox("J’accepte de recevoir par email mes estimations de temps de course et des newletters")
+    
+    # Vérifier si la case est cochée
+    if not checkbox:
+        # Afficher un message d'avertissement si la case n'est pas cochée
+        st.warning("Veuillez cocher la case pour continuer.")
+
+        
+
+
 
     
     # Prédictions pour les distances spécifiées
