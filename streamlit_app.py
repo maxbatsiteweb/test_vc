@@ -13,7 +13,7 @@ from sklearn.linear_model import LinearRegression
 
 st.title("Estimation des temps par la loi de Puissance")
 st.write(
-    "Source [docs.streamlit.io](https://docs.streamlit.io/)."
+    "[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/)."
 )
 
 st.write("Indique au moins deux courses durant lesquelles tu as donné ton maximum et durant lesquelles les conditions étaient bonnes. Les performances doivent de préférence être récentes.")
