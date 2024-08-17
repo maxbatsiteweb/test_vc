@@ -143,20 +143,17 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         validation_button = st.button('Valider')
 
         # Vérifier si la case est cochée
-        if not checkbox:
-            # Afficher un message d'avertissement si la case n'est pas cochée
-            st.warning("Veuillez cocher la case pour continuer.")
+        
 
         if validation_button:
-            st.write("Envoyé")
+
+            if not checkbox:
+                # Afficher un message d'avertissement si la case n'est pas cochée
+                st.warning("Veuillez cocher la case pour continuer.")
+            else:
+                st.write("Envoyé")
 
         
-
-        
-
-        
-
-
 
     
     # Prédictions pour les distances spécifiées
