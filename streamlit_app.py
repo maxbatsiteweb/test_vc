@@ -156,7 +156,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             # Regex pour vérifier le format string@string.
             email_regex = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
 
-            if not re.match(email_regex, email):
+            if not re.match(email_regex, receiver_email):
                 st.warning("L'adresse mail n'est pas valide.")
 
             
