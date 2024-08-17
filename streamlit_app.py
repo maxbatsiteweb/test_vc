@@ -155,6 +155,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             elif receiver_name is None:
                     st.warning("Veuillez remplir le prénom.")
             else:
+                st.write(receiver_name)
                 st.write("Envoyé")
                 
        
