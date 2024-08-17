@@ -150,10 +150,11 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             if not checkbox:
                 # Afficher un message d'avertissement si la case n'est pas cochée
                 st.warning("Veuillez cocher la case pour continuer.")
+            else if receiver_email is None:
+                    st.warning("Veuillez remplir le mail.")
+            else if receiver_name is None:
+                    st.warning("Veuillez remplir le prénom.")
             else:
-                
-
-
                 st.write("Envoyé")
                 
        
