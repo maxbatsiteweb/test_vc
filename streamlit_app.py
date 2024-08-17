@@ -140,10 +140,19 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Créer une case à cocher
         checkbox = st.checkbox("J’accepte de recevoir par email mes estimations de temps de course et des newletters")
         
+        validation_button = st.button('Valider')
+
         # Vérifier si la case est cochée
         if not checkbox:
             # Afficher un message d'avertissement si la case n'est pas cochée
             st.warning("Veuillez cocher la case pour continuer.")
+
+        if validation_button:
+            st.write("Envoyé")
+
+        
+
+        
 
         
 
