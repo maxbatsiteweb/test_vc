@@ -22,6 +22,7 @@ st.write("Tu recevras par e-mail les estimations de performance sur 5km, 10km, 2
 # Initialisation de st.session_state si nécessaire
 if 'distance_1' not in st.session_state:
     st.session_state.distance_1 = "5 km"
+    st.write(True)
 if 'hours_1' not in st.session_state:
     st.session_state.hours_1 = 0
 if 'minutes_1' not in st.session_state:
