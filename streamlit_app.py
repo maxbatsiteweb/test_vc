@@ -128,6 +128,12 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     st.write("\n\n")  # Ajoute des espaces pour créer un peu de marge avant le texte
     st.markdown("<h3 style='text-align: center;'>Recevoir mes estimations de performance</h3>", unsafe_allow_html=True)
 
+    # Formulaire
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        receiver_name = st.text_input("Prénom")
+        receiver_email = st.text_input("Email")
+
 
     
     # Prédictions pour les distances spécifiées
@@ -159,8 +165,7 @@ else:
 
 ### Partie Mail
 
-receiver_email = st.text_input("Ton Email")
-st.write("The current movie title is", receiver_email)
+
 
 
 subject = "An email with attachment from Python"
