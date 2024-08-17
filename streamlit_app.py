@@ -143,31 +143,36 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         checkbox = st.checkbox("J’accepte de recevoir par email mes estimations de temps de course et des newletters")
         
         validation_button = st.button('Valider')
-
+        validation_status = True
+        
         if validation_button:
 
             # Vérifier si adresse mail insérée
             if receiver_name is None:
                 st.warning("Veuillez insérer un prénom.")
+                validation_status = False
 
             if receiver_email is None:
                 st.warning("Veuillez insérer une adresse mail.")
+                validation_status = False
 
             # Regex pour vérifier le format string@string.
             email_regex = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
 
             if not re.match(email_regex, receiver_email):
                 st.warning("L'adresse mail n'est pas valide.")
-
-            
+                validation_status = False
                 
-            
             # Vérifier si la case est cochée
             if not checkbox:
                 # Afficher un message d'avertissement si la case n'est pas cochée
                 st.warning("Veuillez cocher la case pour continuer.")
-            else:
+                validation_status = False
+
+            if validation_status:
                 st.write("Envoyé")
+        else:
+            break
 
         
 
