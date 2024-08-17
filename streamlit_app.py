@@ -11,7 +11,7 @@ import numpy as np
 import streamlit as st
 from sklearn.linear_model import LinearRegression
 
-st.image("path_to_your_logo.png", width=150)
+st.image("logo.png", width=150)
 
 st.title("Estimation des temps par la loi de Puissance")
 st.write(
