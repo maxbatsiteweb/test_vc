@@ -137,10 +137,13 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         receiver_name = st.text_input("Prénom")
+        st.write(receiver_name)
         receiver_email = st.text_input("Email")
+        st.write(receiver_email)
 
         # Créer une case à cocher
         checkbox = st.checkbox("J’accepte de recevoir par email mes estimations de temps de course et des newletters")
+        st.write(checkbox)
         
         validation_button = st.button('Valider')
         validation_status = True
