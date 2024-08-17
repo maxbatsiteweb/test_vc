@@ -142,28 +142,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Créer une case à cocher
         checkbox = st.checkbox("J’accepte de recevoir par email mes estimations de temps de course et des newletters")
 
-        st.markdown(
-                """
-                <style>
-                .btn-container {
-                    display: flex;
-                    justify-content: center;
-                }
-                .btn-container button {
-                    width: 100%;
-                    padding: 10px;
-                    font-size: 16px;
-                }
-                </style>
-                <div class="btn-container">
-                    <button type="button">Valider</button>
-                </div>
-                """,
-                unsafe_allow_html=True
-        )
-        validation_button = st.button('Valider')
         
-        if validation_button:
+        if st.button('Valider'):
 
             validation_status = True
 
