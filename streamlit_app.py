@@ -19,6 +19,11 @@ st.write(
     "[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/#CR85)".
 )
 
+st.title("Estimation des temps de course avec la Loi de Puissance")
+st.write(
+    "Let's start building! For help and inspiration, head over to [Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/#CR85)."
+)
+
 
 # Données des courses : distances en mètres et temps en secondes
 distances_options = {
