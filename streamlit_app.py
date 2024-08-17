@@ -154,6 +154,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             if receiver_name is None:
                 st.warning("Veuillez insérer un prénom.")
                 validation_status = False
+            else:
+                st.write("prénom inséré")
 
             if receiver_email is None:
                 st.warning("Veuillez insérer une adresse mail.")
