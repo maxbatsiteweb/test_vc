@@ -16,6 +16,12 @@ st.write(
     "Source [docs.streamlit.io](https://docs.streamlit.io/)."
 )
 
+st.write("Indique au moins deux courses durant lesquelles tu as donné ton maximum et durant lesquelles les conditions étaient bonnes.
+         Les performances doivent de préférence être récentes.")
+
+st.write("Tu recevras par e-mail les estimations de performance sur 5km, 10km, 20km, semi-marathon
+et marathon")
+
 
 
 
@@ -90,7 +96,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     S_opt = np.exp(b)
 
     # Affichage des temps et vitesses
-    st.write("## Détails des courses")
     # Affichage des temps, vitesses et allures pour les deux courses
 
     def format_time(seconds):
