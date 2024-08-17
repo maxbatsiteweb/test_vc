@@ -124,6 +124,11 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         st.write(f"Vitesse : {speed_2:.2f} m/s, {(speed_2 * 3.6):.2f} km/h")
         st.write(f"Allure : {calculate_pace(total_seconds_2, distances_options[distance_2])}")
 
+    # Affichage du texte centré sous les résultats des courses
+    st.write("\n\n")  # Ajoute des espaces pour créer un peu de marge avant le texte
+    st.markdown("<h3 style='text-align: center;'>Recevoir mes estimations de performance</h3>", unsafe_allow_html=True)
+
+
     
     # Prédictions pour les distances spécifiées
     st.write("## Prédictions pour d'autres distances")
