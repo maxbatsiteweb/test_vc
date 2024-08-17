@@ -1,17 +1,24 @@
 import streamlit as st
 from datetime import datetime, timedelta
+import email, smtplib, ssl
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
-
-receiver_email = st.text_input("Ton Email")
-st.write("The current movie title is", receiver_email)
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 import numpy as np
 import streamlit as st
 from sklearn.linear_model import LinearRegression
+
+st.title(🏃🏃‍♀️ Estimation des temps de course avec la Loi de Puissance")
+st.write(
+    L'athlète doit insérer ses deux meilleurs temps sur deux courses distinctes"
+)
+st.write(
+    "[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/#CR85).
+)
+
 
 # Données des courses : distances en mètres et temps en secondes
 distances_options = {
@@ -144,12 +151,7 @@ else:
 
 
 ### Partie Mail
-import email, smtplib, ssl
-
-from email import encoders
-from email.mime.base import MIMEBase
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+receiver_email = st.text_input("Ton Email")
 
 subject = "An email with attachment from Python"
 body = "This is an email with attachment sent from Python"
