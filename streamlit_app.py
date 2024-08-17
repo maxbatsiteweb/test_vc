@@ -43,6 +43,29 @@ def calculate_speed(distance, hours, minutes, seconds):
     speed = distance / total_seconds
     return speed, total_seconds
 
+# Initialiser les valeurs dans st.session_state si elles n'existent pas
+if 'distance_1' not in st.session_state:
+    st.session_state.distance_1 = None
+if 'distance_1' not in st.session_state:
+    st.session_state.hours_1 = None
+if 'distance_1' not in st.session_state:
+    st.session_state.minutes_1 = None
+if 'distance_1' not in st.session_state:
+    st.session_state.seconds_1 = None
+if 'distance_2' not in st.session_state:
+    st.session_state.distance_1 = None
+if 'distance_2' not in st.session_state:
+    st.session_state.hours_1 = None
+if 'distance_2' not in st.session_state:
+    st.session_state.minutes_1 = None
+if 'distance_2' not in st.session_state:
+    st.session_state.seconds_1 = None
+    
+if 'receiver_name' not in st.session_state:
+    st.session_state.name = None
+if 'receiver_mail' not in st.session_state:
+    st.session_state.email = None
+
 # Sélection des distances
 st.write("# Choix des courses")
 
@@ -50,7 +73,7 @@ st.write("# Choix des courses")
 # Course 1
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    distance_1 = st.selectbox("Distance de la course 1", list(distances_options.keys()))
+    distance_1 = st.selectbox("Distance de la course 1", list(distances_options.keys()), value=st.session_state.distance_1)
 with col2:
     hours_1 = st.number_input("Heures", min_value=0, max_value=23, value=0, key="heures_1")
 with col3:
