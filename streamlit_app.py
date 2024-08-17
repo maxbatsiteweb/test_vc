@@ -11,7 +11,7 @@ import numpy as np
 import streamlit as st
 from sklearn.linear_model import LinearRegression
 
-st.title("🎈 My new app")
+st.title("Estimation des temps par la loi de Puissance")
 st.write(
     "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 )
