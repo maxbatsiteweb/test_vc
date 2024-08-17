@@ -13,11 +13,10 @@ from sklearn.linear_model import LinearRegression
 
 st.title("Estimation des temps par la loi de Puissance")
 st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+    "Source [docs.streamlit.io](https://docs.streamlit.io/)."
 )
 
-receiver_email = st.text_input("Ton Email")
-st.write("The current movie title is", receiver_email)
+
 
 
 # Données des courses : distances en mètres et temps en secondes
@@ -151,7 +150,10 @@ else:
 
 
 ### Partie Mail
+
 receiver_email = st.text_input("Ton Email")
+st.write("The current movie title is", receiver_email)
+
 
 subject = "An email with attachment from Python"
 body = "This is an email with attachment sent from Python"
