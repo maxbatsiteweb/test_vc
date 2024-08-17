@@ -142,7 +142,9 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Créer une case à cocher
         checkbox = st.checkbox("J’accepte de recevoir par email mes estimations de temps de course et des newletters")
 
-        validation_button = st.button('Valider')
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            validation_button = st.button('Valider')
         
         if validation_button:
 
