@@ -15,10 +15,11 @@ st.title("Estimation des temps par la loi de Puissance")
 st.write(
     "[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/)."
 )
+st.write("Jonah P. Drake, Axel Finke, and Richard A. Ferguson (2023) Modelling human endurance: power laws vs critical power")
 
 st.write("Indique au moins deux courses durant lesquelles tu as donné ton maximum et durant lesquelles les conditions étaient bonnes. Les performances doivent de préférence être récentes.")
 
-st.write("Tu recevras par e-mail les estimations de performance sur 5km, 10km, 20km, semi-marathon et marathon")
+st.write("Tu recevras par e-mail les estimations de performance sur 5km, 10km, 20km, semi-marathon et marathon.")
 
 
 
