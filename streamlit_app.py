@@ -77,8 +77,8 @@ col1, col2, col3, col4 = st.columns(4)
 
 
 
-st.write(st.session_state.distance_1)
-st.write(list(distances_options.keys()).index(st.session_state.distance_1))
+st.write(st.session_state.minutes_1)
+
 
 with col1:
     st.session_state.distance_1 = st.selectbox("Distance de la course 1", list(distances_options.keys()), index=list(distances_options.keys()).index(st.session_state.distance_1))
