@@ -11,6 +11,8 @@ import numpy as np
 import streamlit as st
 from sklearn.linear_model import LinearRegression
 
+import re
+
 st.image("logo.png", width=150)
 
 st.title("Estimation des temps par la loi de Puissance")
@@ -142,11 +144,25 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         
         validation_button = st.button('Valider')
 
-        # Vérifier si la case est cochée
-        
-
         if validation_button:
 
+            # Vérifier si adresse mail insérée
+            if receiver_name is None:
+                st.warning("Veuillez insérer un prénom.")
+
+            if receiver_email is None:
+                st.warning("Veuillez insérer une adresse mail.")
+
+            # Regex pour vérifier le format string@string.
+            email_regex = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
+
+            if not re.match(email_regex, email):
+                st.warning("L'adresse mail n'est pas valide.")
+
+            
+                
+            
+            # Vérifier si la case est cochée
             if not checkbox:
                 # Afficher un message d'avertissement si la case n'est pas cochée
                 st.warning("Veuillez cocher la case pour continuer.")
