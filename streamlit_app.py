@@ -11,6 +11,15 @@ import numpy as np
 import streamlit as st
 from sklearn.linear_model import LinearRegression
 
+# Utilisation des colonnes pour insérer le logo en haut à gauche
+col1, col2 = st.columns([1, 4])
+
+with col1:
+    st.image("path_to_your_logo.png", width=100)  # Remplacez "path_to_your_logo.png" par le chemin de votre image
+
+with col2:
+    st.write("Test")  # Espace réservé pour le contenu principal
+
 st.title("Estimation des temps par la loi de Puissance")
 st.write(
     "[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/)."
