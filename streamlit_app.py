@@ -171,90 +171,84 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
             if validation_status:
                 st.write("Envoyé")
-        else:
-            break
+                
+       
+                # Prédictions pour les distances spécifiées
+                st.write("## Prédictions pour d'autres distances")
+                predictions = {}
+                for dist_name, dist_value in distances_options.items():
+                    # Temps prédit en utilisant la relation: ln(T) = (1/E) * (ln(S) + ln(D)) + (1/E) * ln(T)
+                    pred_time = np.exp((1/E_opt) * (np.log(dist_value) - np.log(S_opt)))
+                    hours, remainder = divmod(pred_time, 3600)
+                    minutes, seconds = divmod(remainder, 60)
+                    predictions[dist_name] = f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
+                    st.write(f"{dist_name} : {predictions[dist_name]}")
+            
+                # Affichage des résultats
+                st.write("## Résultats de la régression linéaire")
+                st.write(f"Constante E : {E_opt:.4f}")
+                st.write(f"Constante S : {S_opt:.4f}")
 
-        
+                ### Partie Mail
 
-    
-    # Prédictions pour les distances spécifiées
-    st.write("## Prédictions pour d'autres distances")
-    predictions = {}
-    for dist_name, dist_value in distances_options.items():
-        # Temps prédit en utilisant la relation: ln(T) = (1/E) * (ln(S) + ln(D)) + (1/E) * ln(T)
-        pred_time = np.exp((1/E_opt) * (np.log(dist_value) - np.log(S_opt)))
-        hours, remainder = divmod(pred_time, 3600)
-        minutes, seconds = divmod(remainder, 60)
-        predictions[dist_name] = f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
-        st.write(f"{dist_name} : {predictions[dist_name]}")
+                subject = "An email with attachment from Python"
+                body = "This is an email with attachment sent from Python"
+                sender_email = "maximebataille95@gmail.com"
+                password = "upqm tezg vljv zhuh"
+                
+                # Create a multipart message and set headers
+                message = MIMEMultipart()
+                message["From"] = sender_email
+                message["To"] = receiver_email
+                message["Subject"] = subject
+                message["Bcc"] = receiver_email  # Recommended for mass emails
+                
+                # Add body to email
+                message.attach(MIMEText(body, "plain"))
+                
+                filename = "document.pdf"  # In same directory as script
+                
+                
+                # Open PDF file in binary mode
+                with open(filename, "rb") as attachment:
+                    # Add file as application/octet-stream
+                    # Email client can usually download this automatically as attachment
+                    part = MIMEBase("application", "octet-stream")
+                    part.set_payload(attachment.read())
+                
+                # Encode file in ASCII characters to send by email    
+                encoders.encode_base64(part)
+                
+                # Add header as key/value pair to attachment part
+                part.add_header(
+                    "Content-Disposition",
+                    f"attachment; filename= {filename}",
+                )
+                
+                # Add attachment to message and convert message to string
+                message.attach(part)
+                text = message.as_string()
+                
+                # Log in to server using secure context and send email
+                context = ssl.create_default_context()
+                
+                
+                ### Provisoire
+                '''
+                with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+                    server.login(sender_email, password)
+                    server.sendmail(sender_email, receiver_email, text)
+                
+                '''
 
-    # Affichage des résultats
-    st.write("## Résultats de la régression linéaire")
-    st.write(f"Constante E : {E_opt:.4f}")
-    st.write(f"Constante S : {S_opt:.4f}")
-
-
-  
-
+            
+            
 else:
-    st.write("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
+    st.warning("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
 
 
 
 
 
 
-### Partie Mail
 
-
-
-
-subject = "An email with attachment from Python"
-body = "This is an email with attachment sent from Python"
-sender_email = "maximebataille95@gmail.com"
-password = "upqm tezg vljv zhuh"
-
-# Create a multipart message and set headers
-message = MIMEMultipart()
-message["From"] = sender_email
-message["To"] = receiver_email
-message["Subject"] = subject
-message["Bcc"] = receiver_email  # Recommended for mass emails
-
-# Add body to email
-message.attach(MIMEText(body, "plain"))
-
-filename = "document.pdf"  # In same directory as script
-
-
-# Open PDF file in binary mode
-with open(filename, "rb") as attachment:
-    # Add file as application/octet-stream
-    # Email client can usually download this automatically as attachment
-    part = MIMEBase("application", "octet-stream")
-    part.set_payload(attachment.read())
-
-# Encode file in ASCII characters to send by email    
-encoders.encode_base64(part)
-
-# Add header as key/value pair to attachment part
-part.add_header(
-    "Content-Disposition",
-    f"attachment; filename= {filename}",
-)
-
-# Add attachment to message and convert message to string
-message.attach(part)
-text = message.as_string()
-
-# Log in to server using secure context and send email
-context = ssl.create_default_context()
-
-
-### Provisoire
-'''
-with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-    server.login(sender_email, password)
-    server.sendmail(sender_email, receiver_email, text)
-
-'''
