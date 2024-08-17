@@ -11,9 +11,9 @@ import numpy as np
 import streamlit as st
 from sklearn.linear_model import LinearRegression
 
-st.title(Estimation des temps de course avec la Loi de Puissance")
+st.title("Estimation des temps de course avec la Loi de Puissance")
 st.write(
-    L'athlète doit insérer ses deux meilleurs temps sur deux courses distinctes"
+    "L'athlète doit insérer ses deux meilleurs temps sur deux courses distinctes"
 )
 st.write(
     "[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/#CR85).
