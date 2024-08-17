@@ -136,10 +136,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     # Formulaire
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        receiver_name = st.text_input("Prénom")
-        st.write(receiver_name)
-        receiver_email = st.text_input("Email")
-        st.write(receiver_email)
+        receiver_name = st.text_input("Prénom", value=None)
+        receiver_email = st.text_input("Email", value=None)
 
         # Créer une case à cocher
         checkbox = st.checkbox("J’accepte de recevoir par email mes estimations de temps de course et des newletters")
@@ -154,8 +152,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             if receiver_name is None:
                 st.warning("Veuillez insérer un prénom.")
                 validation_status = False
-            else:
-                st.write("prénom inséré")
 
             if receiver_email is None:
                 st.warning("Veuillez insérer une adresse mail.")
