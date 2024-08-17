@@ -156,7 +156,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             else:
                 st.write(receiver_name)
                 st.write("Envoyé")
-                st.session_state.button_clicked = True
+                st.session_state.button_clicked = False
                 
        
                 # Prédictions pour les distances spécifiées
