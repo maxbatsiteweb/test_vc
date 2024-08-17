@@ -16,7 +16,7 @@ st.write(
     "L'athlète doit insérer ses deux meilleurs temps sur deux courses distinctes"
 )
 st.write(
-    "[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/#CR85).
+    "[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/#CR85)".
 )
 
 
