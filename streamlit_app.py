@@ -11,18 +11,13 @@ import numpy as np
 import streamlit as st
 from sklearn.linear_model import LinearRegression
 
-st.title("Estimation des temps de course avec la Loi de Puissance")
+st.title("🎈 My new app")
 st.write(
-    "L'athlète doit insérer ses deux meilleurs temps sur deux courses distinctes"
-)
-st.write(
-    "[Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/#CR85)".
+    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 )
 
-st.title("Estimation des temps de course avec la Loi de Puissance")
-st.write(
-    "Let's start building! For help and inspiration, head over to [Source](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10858092/#CR85)."
-)
+receiver_email = st.text_input("Ton Email")
+st.write("The current movie title is", receiver_email)
 
 
 # Données des courses : distances en mètres et temps en secondes
