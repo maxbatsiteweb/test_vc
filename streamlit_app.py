@@ -180,7 +180,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 ### Partie Mail
 
                 # Créer le corps du mail avec des éléments HTML
-                body = """
+                body = f"""
                 <html>
                 <head></head>
                 <body>
@@ -189,25 +189,24 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
                     Ces estimations sont basées sur la loi de Puissance.<br><br>
                     
-                    Il se peut que tu ne fasses pas exactement ces temps. <br><br>
-                    
-                    Mais c'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
+                    C'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
 
                     <br><br>
 
                     <!-- Estimations de Temps -->
                     <h4>Tes estimations:</h4>
                     <ul>
-                        <li>5km : 2 heures</li>
-                        <li>10km : 3 heures</li>
-                        <li>20km : 1.5 heures</li>
-                        <li>Semi-marathon : 1.5 heures</li>
-                        <li>Marathon : 1.5 heures</li>
+                        <li>5km : {predictions["5 Km"]}</li>
+                        <li>10km : {predictions["10 Km"]}</li>
+                        <li>20km : {predictions["10 Km"]}</li>
+                        <li>Semi-marathon : {predictions["Semi-marathon"]}</li>
+                        <li>Marathon : {predictions["Marathon"]}</li>
                     </ul>
 
                     <br>
 
-                    <p>Maxime</p>
+                    <p>Maxime</p><br>
+                    <p><i>Entraineur de trail-running indépendant, Data Scientist</i><p>
 
                     <br>
 
