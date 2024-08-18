@@ -157,7 +157,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             elif receiver_name is None:
                     st.warning("Veuillez remplir le prénom.")
             else:
-                st.write(receiver_name)
                 st.write("Envoyé")
                 mail_to_be_sent = True
                 st.session_state.button_clicked = False
@@ -174,7 +173,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             minutes, seconds = divmod(remainder, 60)
             predictions[dist_name] = f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
             predictions_secondes[dist_name] = pred_time
-            st.write(f"{dist_name} : {predictions[dist_name]}")
     
 
         # graphique
