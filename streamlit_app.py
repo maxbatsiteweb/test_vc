@@ -238,6 +238,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         with open("power_law.png", "rb") as image_file:
             base64_image = base64.b64encode(image_file.read()).decode('utf-8')
 
+        st.write(base64_image)
+
         ### Partie Mail
 
         # Créer le corps du mail avec des éléments HTML
