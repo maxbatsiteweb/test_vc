@@ -201,17 +201,19 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                         <li>Marathon : {predictions["Marathon"]}</li>
                     </ul>
 
-                    <p>Maxime
-                    <i>Entraineur de trail-running indépendant, Data Scientist</i><p>
+                    <p><span>Maxime</span>
+                    <span><i>Entraineur de trail-running indépendant, Data Scientist</i></span></p>
+
+                    <br>
 
                     <p><i>PS: Profite du <a href="https://maximebataille-trailrunning.fr/">premier mois offert</a> sur la programmation et le suivi de ton entrainement</i></p>
                 
                     <!-- Liens vers les réseaux sociaux -->
-                    <p>Retrouve-moi sur :</p>
-                    <p>
+                    <p><span>Retrouve-moi sur :</span>
+                   <span>
                         <a href="https://www.linkedin.com/in/maxime-bataille-data/?originalSubdomain=fr">LinkedIn</a> |
                         <a href="https://www.instagram.com/maxbataille.coachtrailrunning/">Instagram</a> |
-                        <a href="https://maximebataille-trailrunning.fr/">Site Web</a>
+                        <a href="https://maximebataille-trailrunning.fr/">Site Web</a></span>
                     </p>
                 </body>
                 </html>
