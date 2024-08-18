@@ -197,7 +197,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 fig.add_trace(go.Scatter(x=list(predictions_secondes.values()),
                                          y=speed_races,
                                          mode='markers',
-                                         marker_color='#83FFC0'))
+                                         marker_color='#83FFC0',
+                                         marker_size=12))
                 
 
                 # Mise en page pour personnaliser les axes
