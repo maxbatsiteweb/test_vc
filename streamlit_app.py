@@ -276,7 +276,9 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             <!-- Profil -->
             <h4>Ton profil de Vitesse</h4>
 
-            <img src="cid:Mailtrapimage", alt="Graphique">
+            <img src="cid:Mailtrapimage", alt="Graphique", style="width: auto; height: 300px">
+
+            
 
             <br>
 
