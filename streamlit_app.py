@@ -191,12 +191,13 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 speed_races = np.array([power_law(t, S_opt, E_opt) for t in predictions_secondes.values()])
 
                 fig = go.Figure()
-                fig.add_trace(go.Scatter(x=time, y=speed, mode='lines', line=dict(color='blue')))
+                fig.add_trace(go.Scatter(x=time, y=speed, mode='lines', line=dict(color='#0B1F52')))
                 
                 
                 fig.add_trace(go.Scatter(x=list(predictions_secondes.values()),
                                          y=speed_races,
-                                         mode='markers'))
+                                         mode='markers',
+                                         marker_color='#83FFC0'))
                 
 
                 # Mise en page pour personnaliser les axes
@@ -221,7 +222,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                         zeroline=True,  # Ligne zéro
                         zerolinewidth=2,  # Largeur de la ligne zéro
                         zerolinecolor='black'  # Couleur de la ligne zéro
-                    )
+                    ),
+                    showlegend=False
                 )
                 
 
