@@ -196,9 +196,9 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                     <!-- Estimations de Temps -->
                     <h4>Tes estimations:</h4>
                     <ul>
-                        <li>5km : {predictions["5 Km"]}</li>
-                        <li>10km : {predictions["10 Km"]}</li>
-                        <li>20km : {predictions["10 Km"]}</li>
+                        <li>5km : {predictions["5 km"]}</li>
+                        <li>10km : {predictions["10 km"]}</li>
+                        <li>20km : {predictions["20 km"]}</li>
                         <li>Semi-marathon : {predictions["Semi-marathon"]}</li>
                         <li>Marathon : {predictions["Marathon"]}</li>
                     </ul>
