@@ -214,14 +214,18 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             ),
             yaxis=dict(
                 title='Vitesse (m/s)',
-                range=[0, max(speed) + 1],  # Limites de l'axe y
+                range=[min(speed) - 0.5, max(speed) + 1],  # Limites de l'axe y
                 tick0=0,  # Début des ticks
                 dtick=0.25,  # Granularité des ticks
                 zeroline=True,  # Ligne zéro
                 zerolinewidth=2,  # Largeur de la ligne zéro
                 zerolinecolor='black'  # Couleur de la ligne zéro
             ),
-            showlegend=False
+            showlegend=False,
+            plot_bgcolor='white',  # Couleur de fond du graphique
+            paper_bgcolor='white',  # Couleur de fond du papier (zone autour du graphique)
+            xaxis_showgrid=False,  # Désactiver la grille des abscisses
+            yaxis_showgrid=False   # Désactiver la grille des ordonnées
         )
                 
         st.plotly_chart(fig)
