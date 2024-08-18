@@ -315,16 +315,13 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         context = ssl.create_default_context()
             
                 
-        '''
+        
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             server.login(sender_email, password)
-            server.sendmail(sender_email, receiver_email, text)
-        '''
+            server.sendmail(sender_email, receiver_email, message)
+       
 
-        with smtplib.SMTP('smtp.gmail.com', 465) as server:  # Remplacez par votre serveur SMTP
-            server.starttls()
-            server.login(sender_email, password)
-            server.send_message(msg)
+
         
                            
 else:
