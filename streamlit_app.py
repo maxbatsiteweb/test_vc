@@ -185,19 +185,18 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 <head></head>
                 <body>
                    
-                    
-                    <!-- Titre -->
-                    <h2>Rapport sur les Estimations de Temps</h2>
-
                     <p>Hello, tes estimations de temps du 5km au marathon sont là.<br><br>
 
-                    Ces estimations sont basées sur la loi de Puissance, il se peut que tu ne fasses pas exactement ces temps
-                    mais c'est une très bonne estimation de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
+                    Ces estimations sont basées sur la loi de Puissance.<br><br>
+                    
+                    Il se peut que tu ne fasses pas exactement ces temps. <br><br>
+                    
+                    Mais c'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
 
                     <br><br>
 
                     <!-- Estimations de Temps -->
-                    <h5>Voici les résultats des estimations de temps :</h5>
+                    <h4>Tes estimations:</h4>
                     <ul>
                         <li>5km : 2 heures</li>
                         <li>10km : 3 heures</li>
@@ -206,11 +205,13 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                         <li>Marathon : 1.5 heures</li>
                     </ul>
 
+                    <br>
+
                     <p>Maxime</p>
 
-                    <br><br>
+                    <br>
 
-                    <p><i>PS: Profite du premier mois offert sur la programmation et le suivi de ton entrainement</i></p>
+                    <p><i>PS: Profite du <a href="https://maximebataille-trailrunning.fr/">premier mois offert</a> sur la programmation et le suivi de ton entrainement</i></p>
                 
                     <!-- Liens vers les réseaux sociaux -->
                     <p>Retrouve-moi sur :</p>
