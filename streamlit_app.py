@@ -16,6 +16,8 @@ import re
 import plotly.express as px
 import plotly.graph_objects as go
 
+import os
+
 st.image("logo.png", width=150)
 
 st.title("Estimation des temps par la loi de Puissance")
