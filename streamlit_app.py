@@ -231,8 +231,16 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             showlegend=False
         )
                 
-
         st.plotly_chart(fig)
+
+        # Sauvegarder le graphique en tant qu'image PNG
+        fig.write_image("power_law.png", format='png')
+
+        import base64
+
+        # Lire l'image et la convertir en base64
+        with open("power_law.png", "rb") as image_file:
+            base64_image = base64.b64encode(image_file.read()).decode('utf-8')
 
         ### Partie Mail
 
@@ -256,6 +264,15 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 <li>Semi-marathon : {predictions["Semi-marathon"]}</li>
                 <li>Marathon : {predictions["Marathon"]}</li>
             </ul>
+
+            <br>
+
+            <!-- Profil -->
+            <h4>Ton profil de Vitesse</h4>
+
+            <img src="data:image/png;base64,{base64_image}" alt="Graphique">
+
+            <br>
 
             <p><div style="margin: 0; padding: 0;">Maxime</div>
             <div style="margin: 0; padding: 0;"><i>Entraineur de trail-running indépendant, Data Scientist</i></div></p>
@@ -288,6 +305,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     
         # Add body to email
         message.attach(MIMEText(body, "html"))
+
+        
         
         
         
