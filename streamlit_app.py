@@ -166,12 +166,14 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 # Prédictions pour les distances spécifiées
                 st.write("## Prédictions pour d'autres distances")
                 predictions = {}
+                predictions_secondes = {}
                 for dist_name, dist_value in distances_options.items():
                     # Temps prédit en utilisant la relation: ln(T) = (1/E) * (ln(S) + ln(D)) + (1/E) * ln(T)
                     pred_time = np.exp((1/E_opt) * (np.log(dist_value) - np.log(S_opt)))
                     hours, remainder = divmod(pred_time, 3600)
                     minutes, seconds = divmod(remainder, 60)
                     predictions[dist_name] = f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
+                    predictions_secondes[dist_name] = pred_time
                     st.write(f"{dist_name} : {predictions[dist_name]}")
         
                 # Affichage des résultats
@@ -182,7 +184,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 # graphique
                 def power_law(time, S, E):
                     return S * (time**(E-1))   
-                time = np.arange(0, predictions["Marathon"] + 600, 100)
+                time = np.arange(0, predictions_secondes["Marathon"] + 600, 100)
                 speed = np.array([power_law(t) for t in time])
                 
                 fig = px.line(x=time, y=speed)
