@@ -201,7 +201,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
         # Mise en page pour personnaliser les axes
         fig.update_layout(
-            title='Loi de Puissance',
             xaxis=dict(
                 title='Temps (minutes)',
                 range=[0, max(time)],  # Limites de l'axe x
