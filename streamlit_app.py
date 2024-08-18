@@ -184,7 +184,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 # graphique
                 def power_law(time, S, E):
                     return S * (time**(E-1))   
-                time = np.arange(0, predictions_secondes["Marathon"] + 3000, 100)
+                time = np.arange(0, predictions_secondes["Marathon"] + 4000, 100)
                 speed = np.array([power_law(t, S_opt, E_opt) for t in time])
 
                 speed_races = np.array([power_law(t, S_opt, E_opt) for t in predictions_secondes.values()])
