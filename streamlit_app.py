@@ -200,7 +200,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                                          marker_color='#83FFC0',
                                          marker_size=12,
                                          text=list(distances_options.keys()),
-                                         textposition='right',))
+                                         textposition='middle right',))
                 
 
                 # Mise en page pour personnaliser les axes
