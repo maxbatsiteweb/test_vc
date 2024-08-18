@@ -35,7 +35,6 @@ st.write("Tu recevras par e-mail les estimations de performance sur 5km, 10km, 2
 distances_options = {
     "5 km": 5000,
     "10 km": 10000,
-    "20 km": 20000,
     "Semi-marathon": 21097.5,
     "Marathon": 42195
 }
