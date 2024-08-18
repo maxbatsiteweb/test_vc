@@ -188,31 +188,44 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                     
                     <!-- Titre -->
                     <h2>Rapport sur les Estimations de Temps</h2>
-                
-                    
+
+                    <p>Hello, tes estimations de temps du 5km au marathon sont là.<br><br>
+
+                    Ces estimations sont basées sur la loi de Puissance, il se peut que tu ne fasses pas exactement ces temps
+                    mais c'est une très bonne estimation de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
+
+                    <br><br>
 
                     <!-- Estimations de Temps -->
-                    <p>Voici les résultats des estimations de temps :</p>
+                    <h5>Voici les résultats des estimations de temps :</h5>
                     <ul>
-                        <li>Tâche 1 : 2 heures</li>
-                        <li>Tâche 2 : 3 heures</li>
-                        <li>Tâche 3 : 1.5 heures</li>
+                        <li>5km : 2 heures</li>
+                        <li>10km : 3 heures</li>
+                        <li>20km : 1.5 heures</li>
+                        <li>Semi-marathon : 1.5 heures</li>
+                        <li>Marathon : 1.5 heures</li>
                     </ul>
+
+                    <p>Maxime</p>
+
+                    <br><br>
+
+                    <p><i>PS: Profite du premier mois offert sur la programmation et le suivi de ton entrainement</i></p>
                 
                     <!-- Liens vers les réseaux sociaux -->
-                    <p>Retrouvez-moi sur :</p>
+                    <p>Retrouve-moi sur :</p>
                     <p>
-                        <a href="https://www.linkedin.com/in/votreprofil">LinkedIn</a> |
-                        <a href="https://twitter.com/votreprofil">Twitter</a> |
-                        <a href="https://github.com/votreprofil">GitHub</a>
+                        <a href="https://www.linkedin.com/in/maxime-bataille-data/?originalSubdomain=fr">LinkedIn</a> |
+                        <a href="https://www.instagram.com/maxbataille.coachtrailrunning/">Instagram</a> |
+                        <a href="https://maximebataille-trailrunning.fr/">Site Web</a>
                     </p>
                 </body>
                 </html>
                 """
     
-                subject = "An email with attachment from Python"
-                sender_email = "maximebataille.trailrunning@gmail.com"
-                password = "22a7u6kK!:"
+                subject = "Tes estimations de temps du 5km au Marathon avec la loi de Puissance"
+                sender_email = "maximebataille95@gmail.com"
+                password = "upqm tezg vljv zhuh"
                 
                 # Create a multipart message and set headers
                 message = MIMEMultipart()
