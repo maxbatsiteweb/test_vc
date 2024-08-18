@@ -321,7 +321,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Specify the  ID according to the img src in the HTML part
         
         image.add_header('Content-ID', '<Mailtrapimage>')
-        image.add_header('Content-Disposition', 'attachment', filename='chatdesbois.png')  # Nom de la pièce jointe
+        image.add_header('Content-Disposition', 'attachment', filename='powerlaw.png')  # Nom de la pièce jointe
         message.attach(image)
 
         
