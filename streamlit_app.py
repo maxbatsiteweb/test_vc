@@ -242,6 +242,9 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
         ### Partie Mail
 
+        from email.mime.image import MIMEImage
+
+
         # Créer le corps du mail avec des éléments HTML
         body = f"""
         <html>
@@ -268,7 +271,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             <!-- Profil -->
             <h4>Ton profil de Vitesse</h4>
 
-            <img src="data:image/png;base64,{base64_image}" alt="Graphique">
+            <img src="cid:Mailtrapimage", alt="Graphique">
 
             <br>
 
@@ -304,9 +307,14 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Add body to email
         message.attach(MIMEText(body, "html"))
 
+        fp = open('power_law.png', 'rb')
+        image = MIMEImage(fp.read())
+        fp.close()
         
-        
-        
+        # Specify the  ID according to the img src in the HTML part
+        image.add_header('Content-ID', '<Mailtrapimage>')
+        message.attach(image)
+
         
         # Add attachment to message and convert message to string
         text = message.as_string()
@@ -314,15 +322,12 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Log in to server using secure context and send email
         context = ssl.create_default_context()
             
-                
-        
+
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, text)
        
-
-
-        
+ 
                            
 else:
     st.warning("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
