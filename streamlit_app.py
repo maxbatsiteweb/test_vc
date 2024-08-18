@@ -230,7 +230,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Sauvegarder le graphique en tant qu'image PNG
         fig.write_image("power_law.png", format='png')
 
-        st.write(os.listdir(directory))
+        st.write(os.listdir())
 
         import base64
 
