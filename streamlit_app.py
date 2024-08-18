@@ -191,8 +191,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                     
                     C'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
 
-                    <br>
-
                     <!-- Estimations de Temps -->
                     <h4>Tes estimations:</h4>
                     <ul>
@@ -203,12 +201,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                         <li>Marathon : {predictions["Marathon"]}</li>
                     </ul>
 
-                    <br>
-
-                    <p>Maxime</p>
-                    <p><i>Entraineur de trail-running indépendant, Data Scientist</i><p>
-
-                    <br>
+                    <p>Maxime
+                    <i>Entraineur de trail-running indépendant, Data Scientist</i><p>
 
                     <p><i>PS: Profite du <a href="https://maximebataille-trailrunning.fr/">premier mois offert</a> sur la programmation et le suivi de ton entrainement</i></p>
                 
