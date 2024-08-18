@@ -189,7 +189,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 speed = np.array([power_law(t, S_opt, E_opt) for t in time])
 
                 fig = go.Figure()
-                fig.add_trace(px.line(x=time, y=speed))
+                fig.add_trace(go.Scatter(x=time, y=speed))
 
                 # Mise en page pour personnaliser les axes
                 fig.update_layout(
