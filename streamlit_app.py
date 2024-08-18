@@ -321,7 +321,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             server.sendmail(sender_email, receiver_email, text)
         '''
 
-        with smtplib.SMTP('smtp.example.com', 465) as server:  # Remplacez par votre serveur SMTP
+        with smtplib.SMTP('smtp.gmail.com', 465) as server:  # Remplacez par votre serveur SMTP
             server.starttls()
             server.login(sender_email, password)
             server.send_message(msg)
