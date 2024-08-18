@@ -13,6 +13,8 @@ from sklearn.linear_model import LinearRegression
 
 import re
 
+import plotly.express as px
+
 st.image("logo.png", width=150)
 
 st.title("Estimation des temps par la loi de Puissance")
@@ -176,6 +178,16 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 st.write("## Résultats de la régression linéaire")
                 st.write(f"Constante E : {E_opt:.4f}")
                 st.write(f"Constante S : {S_opt:.4f}")
+
+                # graphique
+                def power_law(time, S, E):
+                    return S * (time**(E-1))   
+                time = np.arange(0, predictions["Marathon"] + 600, 100)
+                speed = np.array([power_law(t) for t in time])
+                
+                fig = px.line(x=time, y=speed)
+
+                st.plotly_chart(fig)
     
                 ### Partie Mail
 
