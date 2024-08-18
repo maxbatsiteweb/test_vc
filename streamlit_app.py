@@ -196,7 +196,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                     title='Loi de Puissance',
                     xaxis=dict(
                         title='Temps (secondes)',
-                        range=[0, max(x)],  # Limites de l'axe x
+                        range=[0, max(time)],  # Limites de l'axe x
                         tick0=0,  # Début des ticks
                         dtick=1200,  # Granularité des ticks
                         zeroline=True,  # Ligne zéro
@@ -205,7 +205,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                     ),
                     yaxis=dict(
                         title='Vitesse (m/s)',
-                        range=[0, max(y) + 1],  # Limites de l'axe y
+                        range=[0, max(speed) + 1],  # Limites de l'axe y
                         tick0=0,  # Début des ticks
                         dtick=0.25,  # Granularité des ticks
                         zeroline=True,  # Ligne zéro
