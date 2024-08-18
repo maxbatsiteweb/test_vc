@@ -295,7 +295,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         password = "upqm tezg vljv zhuh"
         
         # Create a multipart message and set headers
-        message = MIMEMultipart('alternative)
+        message = MIMEMultipart('alternative')
         message["From"] = sender_email
         message["To"] = receiver_email
         message["Subject"] = subject
