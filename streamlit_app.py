@@ -319,7 +319,9 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         fp.close()
         
         # Specify the  ID according to the img src in the HTML part
-        image.add_header('Content-ID', '<Mailtrapimage>', filename="test")
+        
+        image.add_header('Content-ID', '<Mailtrapimage>')
+        image.add_header('Content-Disposition', 'attachment', filename='bonjour.png')  # Nom de la pièce jointe
         message.attach(image)
 
         
