@@ -165,8 +165,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 st.session_state.receiver_name = None
                 
     if mail_to_be_sent:   
-        # Prédictions pour les distances spécifiées
-        st.write("## Prédictions pour d'autres distances")
         predictions = {}
         predictions_secondes = {}
         for dist_name, dist_value in distances_options.items():
@@ -178,10 +176,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             predictions_secondes[dist_name] = pred_time
             st.write(f"{dist_name} : {predictions[dist_name]}")
     
-        # Affichage des résultats
-        st.write("## Résultats de la régression linéaire")
-        st.write(f"Constante E : {E_opt:.4f}")
-        st.write(f"Constante S : {S_opt:.4f}")
 
         # graphique
         def power_law(time, S, E):
