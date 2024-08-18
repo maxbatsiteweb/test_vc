@@ -194,7 +194,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 fig.add_trace(go.Scatter(x=time, y=speed, mode='lines', line=dict(color='blue')))
                 
                 
-                fig.add_trace(go.Scatter(x=predictions_secondes.values(),
+                fig.add_trace(go.Scatter(x=list(predictions_secondes.values()),
                                          y=speed_races,
                                          mode='markers'))
                 
