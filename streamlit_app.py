@@ -191,7 +191,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                     
                     C'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
 
-                    <br><br>
+                    <br>
 
                     <!-- Estimations de Temps -->
                     <h4>Tes estimations:</h4>
@@ -205,7 +205,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
                     <br>
 
-                    <p>Maxime</p><br>
+                    <p>Maxime</p>
                     <p><i>Entraineur de trail-running indépendant, Data Scientist</i><p>
 
                     <br>
