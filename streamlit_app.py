@@ -170,7 +170,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                     hours, remainder = divmod(pred_time, 3600)
                     minutes, seconds = divmod(remainder, 60)
                     predictions[dist_name] = f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
-                st.write(f"{dist_name} : {predictions[dist_name]}")
+                    st.write(f"{dist_name} : {predictions[dist_name]}")
         
                 # Affichage des résultats
                 st.write("## Résultats de la régression linéaire")
@@ -178,9 +178,39 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 st.write(f"Constante S : {S_opt:.4f}")
     
                 ### Partie Mail
+
+                # Créer le corps du mail avec des éléments HTML
+                body = """
+                <html>
+                <head></head>
+                <body>
+                   
+                    
+                    <!-- Titre -->
+                    <h2>Rapport sur les Estimations de Temps</h2>
+                
+                    
+
+                    <!-- Estimations de Temps -->
+                    <p>Voici les résultats des estimations de temps :</p>
+                    <ul>
+                        <li>Tâche 1 : 2 heures</li>
+                        <li>Tâche 2 : 3 heures</li>
+                        <li>Tâche 3 : 1.5 heures</li>
+                    </ul>
+                
+                    <!-- Liens vers les réseaux sociaux -->
+                    <p>Retrouvez-moi sur :</p>
+                    <p>
+                        <a href="https://www.linkedin.com/in/votreprofil">LinkedIn</a> |
+                        <a href="https://twitter.com/votreprofil">Twitter</a> |
+                        <a href="https://github.com/votreprofil">GitHub</a>
+                    </p>
+                </body>
+                </html>
+                """
     
                 subject = "An email with attachment from Python"
-                body = "This is an email with attachment sent from Python"
                 sender_email = "maximebataille95@gmail.com"
                 password = "upqm tezg vljv zhuh"
                 
@@ -192,29 +222,11 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 message["Bcc"] = receiver_email  # Recommended for mass emails
             
                 # Add body to email
-                message.attach(MIMEText(body, "plain"))
-                
-                filename = "document.pdf"  # In same directory as script
+                message.attach(MIMEText(body, "html"))
                 
                 
-                # Open PDF file in binary mode
-                with open(filename, "rb") as attachment:
-                    # Add file as application/octet-stream
-                    # Email client can usually download this automatically as attachment
-                    part = MIMEBase("application", "octet-stream")
-                    part.set_payload(attachment.read())
-                
-                # Encode file in ASCII characters to send by email    
-                encoders.encode_base64(part)
-                
-                # Add header as key/value pair to attachment part
-                part.add_header(
-                    "Content-Disposition",
-                    f"attachment; filename= {filename}",
-                )
                 
                 # Add attachment to message and convert message to string
-                message.attach(part)
                 text = message.as_string()
                 
                 # Log in to server using secure context and send email
@@ -222,14 +234,10 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                     
                 
                 ### Provisoire
-                '''
+               
                 with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
                     server.login(sender_email, password)
                     server.sendmail(sender_email, receiver_email, text)
-                
-                '''
-
-            
-            
+                           
 else:
     st.warning("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
