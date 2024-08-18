@@ -137,6 +137,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
     # Formulaire
     col1, col2, col3 = st.columns([1, 2, 1])
+    mail_to_be_sent = False
     with col2:
         receiver_name = st.text_input("Prénom", value=None)
         receiver_email = st.text_input("Email", value=None)
@@ -158,148 +159,150 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             else:
                 st.write(receiver_name)
                 st.write("Envoyé")
+                mail_to_be_sent = True
                 st.session_state.button_clicked = False
                 st.session_state.receiver_email = None
                 st.session_state.receiver_name = None
                 
-       
-                # Prédictions pour les distances spécifiées
-                st.write("## Prédictions pour d'autres distances")
-                predictions = {}
-                predictions_secondes = {}
-                for dist_name, dist_value in distances_options.items():
-                    # Temps prédit en utilisant la relation: ln(T) = (1/E) * (ln(S) + ln(D)) + (1/E) * ln(T)
-                    pred_time = np.exp((1/E_opt) * (np.log(dist_value) - np.log(S_opt)))
-                    hours, remainder = divmod(pred_time, 3600)
-                    minutes, seconds = divmod(remainder, 60)
-                    predictions[dist_name] = f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
-                    predictions_secondes[dist_name] = pred_time
-                    st.write(f"{dist_name} : {predictions[dist_name]}")
+    if mail_to_be_sent:   
+        # Prédictions pour les distances spécifiées
+        st.write("## Prédictions pour d'autres distances")
+        predictions = {}
+        predictions_secondes = {}
+        for dist_name, dist_value in distances_options.items():
+            # Temps prédit en utilisant la relation: ln(T) = (1/E) * (ln(S) + ln(D)) + (1/E) * ln(T)
+            pred_time = np.exp((1/E_opt) * (np.log(dist_value) - np.log(S_opt)))
+            hours, remainder = divmod(pred_time, 3600)
+            minutes, seconds = divmod(remainder, 60)
+            predictions[dist_name] = f"{int(hours)} heures, {int(minutes)} minutes, {int(seconds)} secondes"
+            predictions_secondes[dist_name] = pred_time
+            st.write(f"{dist_name} : {predictions[dist_name]}")
+    
+        # Affichage des résultats
+        st.write("## Résultats de la régression linéaire")
+        st.write(f"Constante E : {E_opt:.4f}")
+        st.write(f"Constante S : {S_opt:.4f}")
+
+        # graphique
+        def power_law(time, S, E):
+            return S * (time**(E-1))   
+        time = np.arange(0, predictions_secondes["Marathon"] + 4000, 100)
+        speed = np.array([power_law(t, S_opt, E_opt) for t in time])
+
+        speed_races = np.array([power_law(t, S_opt, E_opt) for t in predictions_secondes.values()])
+
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=time, y=speed, mode='lines', line=dict(color='#0B1F52')))
         
-                # Affichage des résultats
-                st.write("## Résultats de la régression linéaire")
-                st.write(f"Constante E : {E_opt:.4f}")
-                st.write(f"Constante S : {S_opt:.4f}")
-
-                # graphique
-                def power_law(time, S, E):
-                    return S * (time**(E-1))   
-                time = np.arange(0, predictions_secondes["Marathon"] + 4000, 100)
-                speed = np.array([power_law(t, S_opt, E_opt) for t in time])
-
-                speed_races = np.array([power_law(t, S_opt, E_opt) for t in predictions_secondes.values()])
-
-                fig = go.Figure()
-                fig.add_trace(go.Scatter(x=time, y=speed, mode='lines', line=dict(color='#0B1F52')))
-                
-                
-                fig.add_trace(go.Scatter(x=list(predictions_secondes.values()),
-                                         y=speed_races,
-                                         mode='markers+text',
-                                         marker_color='#83FFC0',
-                                         marker_size=12,
-                                         text=list(distances_options.keys()),
-                                         textposition='middle right',))
+        
+        fig.add_trace(go.Scatter(x=list(predictions_secondes.values()),
+                                 y=speed_races,
+                                 mode='markers+text',
+                                 marker_color='#83FFC0',
+                                 marker_size=12,
+                                 text=list(distances_options.keys()),
+                                 textposition='middle right',))
                 
 
-                # Mise en page pour personnaliser les axes
-                fig.update_layout(
-                    title='Loi de Puissance',
-                    xaxis=dict(
-                        title='Temps (minutes)',
-                        range=[0, max(time)],  # Limites de l'axe x
-                        tick0=0,  # Début des ticks
-                        dtick=1200,  # Granularité des ticks
-                        zeroline=True,  # Ligne zéro
-                        zerolinewidth=2,  # Largeur de la ligne zéro
-                        zerolinecolor='black',  # Couleur de la ligne zéro
-                        tickformat='%d',  # Format des ticks en entier
-                        ticktext=[f'{int(val / 60)}' for val in np.arange(0, max(time) + 1, 1200)]  # Labels divisés par 60
-                    ),
-                    yaxis=dict(
-                        title='Vitesse (m/s)',
-                        range=[0, max(speed) + 1],  # Limites de l'axe y
-                        tick0=0,  # Début des ticks
-                        dtick=0.25,  # Granularité des ticks
-                        zeroline=True,  # Ligne zéro
-                        zerolinewidth=2,  # Largeur de la ligne zéro
-                        zerolinecolor='black'  # Couleur de la ligne zéro
-                    ),
-                    showlegend=False
-                )
+        # Mise en page pour personnaliser les axes
+        fig.update_layout(
+            title='Loi de Puissance',
+            xaxis=dict(
+                title='Temps (minutes)',
+                range=[0, max(time)],  # Limites de l'axe x
+                tick0=0,  # Début des ticks
+                dtick=1200,  # Granularité des ticks
+                zeroline=True,  # Ligne zéro
+                zerolinewidth=2,  # Largeur de la ligne zéro
+                zerolinecolor='black',  # Couleur de la ligne zéro
+                tickformat='%d',  # Format des ticks en entier
+                ticktext=[f'{int(val / 60)}' for val in np.arange(0, max(time) + 1, 1200)]  # Labels divisés par 60
+            ),
+            yaxis=dict(
+                title='Vitesse (m/s)',
+                range=[0, max(speed) + 1],  # Limites de l'axe y
+                tick0=0,  # Début des ticks
+                dtick=0.25,  # Granularité des ticks
+                zeroline=True,  # Ligne zéro
+                zerolinewidth=2,  # Largeur de la ligne zéro
+                zerolinecolor='black'  # Couleur de la ligne zéro
+            ),
+            showlegend=False
+        )
                 
 
-                st.plotly_chart(fig)
-    
-                ### Partie Mail
+        st.plotly_chart(fig)
 
-                # Créer le corps du mail avec des éléments HTML
-                body = f"""
-                <html>
-                <head></head>
-                <body>
-                   
-                    <p>Hello, tes estimations de temps du 5km au marathon sont là.<br><br>
+        ### Partie Mail
 
-                    Ces estimations sont basées sur la loi de Puissance.<br><br>
-                    
-                    C'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
+        # Créer le corps du mail avec des éléments HTML
+        body = f"""
+        <html>
+        <head></head>
+        <body>
+           
+            <p>Hello, tes estimations de temps du 5km au marathon sont là.<br><br>
 
-                    <!-- Estimations de Temps -->
-                    <h4>Tes estimations:</h4>
-                    <ul>
-                        <li>5km : {predictions["5 km"]}</li>
-                        <li>10km : {predictions["10 km"]}</li>
-                        <li>Semi-marathon : {predictions["Semi-marathon"]}</li>
-                        <li>Marathon : {predictions["Marathon"]}</li>
-                    </ul>
-
-                    <p><div style="margin: 0; padding: 0;">Maxime</div>
-                    <div style="margin: 0; padding: 0;"><i>Entraineur de trail-running indépendant, Data Scientist</i></div></p>
-
-                    <br>
-
-                    <p><i>PS: Profite du <a href="https://maximebataille-trailrunning.fr/">premier mois offert</a> sur la programmation et le suivi de ton entrainement</i></p>
-                
-                    <!-- Liens vers les réseaux sociaux -->
-                    <p><div style="margin: 0; padding: 0;">Retrouve-moi sur :</div>
-                   <div style="margin: 0; padding: 0;">
-                        <a href="https://www.linkedin.com/in/maxime-bataille-data/?originalSubdomain=fr">LinkedIn</a> |
-                        <a href="https://www.instagram.com/maxbataille.coachtrailrunning/">Instagram</a> |
-                        <a href="https://maximebataille-trailrunning.fr/">Site Web</a></div>
-                    </p>
-                </body>
-                </html>
-                """
-    
-                subject = "Tes estimations de temps du 5km au Marathon avec la loi de Puissance"
-                sender_email = "maximebataille95@gmail.com"
-                password = "upqm tezg vljv zhuh"
-                
-                # Create a multipart message and set headers
-                message = MIMEMultipart()
-                message["From"] = sender_email
-                message["To"] = receiver_email
-                message["Subject"] = subject
-                message["Bcc"] = receiver_email  # Recommended for mass emails
+            Ces estimations sont basées sur la loi de Puissance.<br><br>
             
-                # Add body to email
-                message.attach(MIMEText(body, "html"))
+            C'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
+
+            <!-- Estimations de Temps -->
+            <h4>Tes estimations:</h4>
+            <ul>
+                <li>5km : {predictions["5 km"]}</li>
+                <li>10km : {predictions["10 km"]}</li>
+                <li>Semi-marathon : {predictions["Semi-marathon"]}</li>
+                <li>Marathon : {predictions["Marathon"]}</li>
+            </ul>
+
+            <p><div style="margin: 0; padding: 0;">Maxime</div>
+            <div style="margin: 0; padding: 0;"><i>Entraineur de trail-running indépendant, Data Scientist</i></div></p>
+
+            <br>
+
+            <p><i>PS: Profite du <a href="https://maximebataille-trailrunning.fr/">premier mois offert</a> sur la programmation et le suivi de ton entrainement</i></p>
+        
+            <!-- Liens vers les réseaux sociaux -->
+            <p><div style="margin: 0; padding: 0;">Retrouve-moi sur :</div>
+           <div style="margin: 0; padding: 0;">
+                <a href="https://www.linkedin.com/in/maxime-bataille-data/?originalSubdomain=fr">LinkedIn</a> |
+                <a href="https://www.instagram.com/maxbataille.coachtrailrunning/">Instagram</a> |
+                <a href="https://maximebataille-trailrunning.fr/">Site Web</a></div>
+            </p>
+        </body>
+        </html>
+        """
+    
+        subject = "Tes estimations de temps du 5km au Marathon avec la loi de Puissance"
+        sender_email = "maximebataille95@gmail.com"
+        password = "upqm tezg vljv zhuh"
+        
+        # Create a multipart message and set headers
+        message = MIMEMultipart()
+        message["From"] = sender_email
+        message["To"] = receiver_email
+        message["Subject"] = subject
+        message["Bcc"] = receiver_email  # Recommended for mass emails
+    
+        # Add body to email
+        message.attach(MIMEText(body, "html"))
+        
+        
+        
+        # Add attachment to message and convert message to string
+        text = message.as_string()
                 
+        # Log in to server using secure context and send email
+        context = ssl.create_default_context()
+            
                 
-                
-                # Add attachment to message and convert message to string
-                text = message.as_string()
-                
-                # Log in to server using secure context and send email
-                context = ssl.create_default_context()
-                    
-                
-                ### Provisoire
-               
-                with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-                    server.login(sender_email, password)
-                    server.sendmail(sender_email, receiver_email, text)
+        ### Provisoire
+       '''
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, text)
+        '''
                            
 else:
     st.warning("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
