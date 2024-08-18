@@ -207,6 +207,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 tick0=0,  # Début des ticks
                 dtick=1200,  # Granularité des ticks
                 zeroline=True,  # Ligne zéro
+                showline=True,  # Afficher la ligne de l'axe
                 zerolinewidth=2,  # Largeur de la ligne zéro
                 zerolinecolor='black',  # Couleur de la ligne zéro
                 tickformat='%d',  # Format des ticks en entier
@@ -225,7 +226,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             plot_bgcolor='white',  # Couleur de fond du graphique
             paper_bgcolor='white',  # Couleur de fond du papier (zone autour du graphique)
             xaxis_showgrid=False,  # Désactiver la grille des abscisses
-            yaxis_showgrid=False   # Désactiver la grille des ordonnées
+            yaxis_showgrid=False   # Désactiver la grille des ordonnées,
+            margin=dict(l=20, r=20, t=30, b=30)  # Marges : gauche, droite, haut, bas
         )
                 
         st.plotly_chart(fig)
