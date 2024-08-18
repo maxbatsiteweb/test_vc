@@ -212,7 +212,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     
                 subject = "An email with attachment from Python"
                 sender_email = "maximebataille.trailrunning@gmail.com"
-                password = "22a7u6kK!"
+                password = "22a7u6kK!:"
                 
                 # Create a multipart message and set headers
                 message = MIMEMultipart()
