@@ -69,14 +69,11 @@ def calculate_speed(distance, hours, minutes, seconds):
 st.write("# Choix des courses")
 
 # Créer les cases à cocher
-
-
 races = list(distances_options.keys())
 col1, col2, col3, col4 = st.columns(len(races))
 
 # Dictionnaire pour stocker l'état des cases à cocher
 selected_courses = {}
-
 
 # Afficher les cases à cocher dans les colonnes
 with col1:
@@ -91,29 +88,27 @@ with col4:
 # Obtenir la liste des courses sélectionnées
 selected_courses_list = [course for course, selected in selected_courses.items() if selected]
 
+if len(selected_courses_list) < 2:
+    st.error("Veuillez sélectionner au moins deux courses.")
+else:
+    results = {}
+    total_seconds = []
+    speeds = []
+    for course in selected_courses_list:
+        st.write(f"**{course}**")
+        
+        # Entrée des heures, minutes, secondes
+        distance = distances_options[course]
+        hours = st.number_input(f"Heures", max_value=23, value=0, key=f"{course}_hours")
+        minutes = st.number_input(f"Minutes", min_value=0, max_value=59, value=0, key=f"{course}_minutes")
+        seconds = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course}_seconds")
 
-# Utilisation des colonnes pour afficher les inputs côte à côte
-# Course 1
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    distance_1 = st.selectbox("Distance de la course 1", list(distances_options.keys()))
-with col2:
-    hours_1 = st.number_input("Heures", min_value=0, max_value=23, value=0, key="heures_1")
-with col3:
-    minutes_1 = st.number_input("Minutes", min_value=0, max_value=59, value=0, key="minutes_1")
-with col4:
-    seconds_1 = st.number_input("Secondes", min_value=0, max_value=59, value=0, key="secondes_1")
+        results[course] = (hours, minutes, seconds)
+        seconds, speed = calculate_speed_safe(distance, hours, minutes, seconds)
+        total_seconds.append(seconds)
+        speeds.append(speed)        
 
-# Course 2
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    distance_2 = st.selectbox("Distance de la course 2", [dist for dist in distances_options.keys() if dist != distance_1])
-with col2:
-    hours_2 = st.number_input("Heures", min_value=0, max_value=23, value=0, key="heures_2")
-with col3:
-    minutes_2 = st.number_input("Minutes", min_value=0, max_value=59, value=0, key="minutes_2")
-with col4:
-    seconds_2 = st.number_input("Secondes", min_value=0, max_value=59, value=0, key="secondes_2")
+        
 
 # Vérification avant de calculer les vitesses
 def calculate_speed_safe(distance, hours, minutes, seconds):
@@ -128,10 +123,10 @@ def calculate_speed_safe(distance, hours, minutes, seconds):
 speed_1, total_seconds_1 = calculate_speed_safe(distances_options[distance_1], hours_1, minutes_1, seconds_1)
 speed_2, total_seconds_2 = calculate_speed_safe(distances_options[distance_2], hours_2, minutes_2, seconds_2)
 
-if total_seconds_1 > 0 and total_seconds_2 > 0:
+if 0 in total_seconds:
     # Réaliser la régression linéaire avec Scikit-learn
-    X = np.log(np.array([total_seconds_1, total_seconds_2])).reshape(-1, 1)
-    y = np.log(np.array([speed_1, speed_2]))
+    X = np.log(np.array(total_seconds)).reshape(-1, 1)
+    y = np.log(np.array(speeds))
     
     model = LinearRegression()
     model.fit(X, y)
@@ -160,20 +155,26 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     # Utilisation des colonnes pour afficher les résultats côte à côte
     # Utilisation des colonnes pour afficher les résultats côte à côte
     col1, col2 = st.columns(2)
-    
-    # Course 1
+
+
+    # Afficher les résultats dans les colonnes
     with col1:
-        st.write(f"### Course 1 ({distance_1})")
-        st.write(f"Temps : {format_time(total_seconds_1)}")
-        st.write(f"Vitesse : {speed_1:.2f} m/s, {(speed_1 * 3.6):.2f} km/h")
-        st.write(f"Allure : {calculate_pace(total_seconds_1, distances_options[distance_1])}")
-    
-    # Course 2
+            st.header("Ligne 1")
+            for course, speed, total_second in zip(selected_courses_list[:2], speeds[:2], total_seconds[:2]):  # Les deux premiers résultats
+
+                st.write(f"{course}")
+                st.write(f"Vitesse : {speed:.2f} m/s, {(speed * 3.6):.2f} km/h")
+                st.write(f"Allure : {calculate_pace(total_seconds, distances_options[course])}")
+                st.write("---")  # Séparateur pour les résultats
+
     with col2:
-        st.write(f"### Course 2 ({distance_2})")
-        st.write(f"Temps : {format_time(total_seconds_2)}")
-        st.write(f"Vitesse : {speed_2:.2f} m/s, {(speed_2 * 3.6):.2f} km/h")
-        st.write(f"Allure : {calculate_pace(total_seconds_2, distances_options[distance_2])}")
+            st.header("Ligne 2")
+            for course, speed, total_second in zip(selected_courses_list[2:], speeds[2:], total_seconds[2:]):  # Les deux derniers résultats
+                st.write(f"{course}")
+                st.write(f"Vitesse : {speed:.2f} m/s, {(speed * 3.6):.2f} km/h")
+                st.write(f"Allure : {calculate_pace(total_seconds, distances_options[course])}")
+                st.write("---")  # Séparateur pour les résultats
+    
 
     # Affichage du texte centré sous les résultats des courses
     st.write("\n\n")  # Ajoute des espaces pour créer un peu de marge avant le texte
