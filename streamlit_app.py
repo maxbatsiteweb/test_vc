@@ -346,7 +346,14 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, text)
-            st.write("Envoyé !")
+
+            
+        st.write("Envoyé !")
+        gif_url = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExemVtdTRkZTRnMHN5Z3oycjBvNmI5YjA2aHlpZXo3bHRubmNvNWs1NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3owyoTHcCsmo5o43tK/giphy.gif"
+
+        # Afficher le GIF
+        st.image(gif_url, format='GIF')
+
 
 
         #ouvrir la page du site web
@@ -358,9 +365,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Afficher le lien HTML avec markdown en autorisant le HTML brut
         st.markdown(js_code, unsafe_allow_html=True)
 
-        
-       
- 
-                           
+                                 
 else:
     st.warning("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
