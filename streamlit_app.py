@@ -74,20 +74,22 @@ for course in distances_options.keys():
     if st.checkbox(course):
         selected_courses.append(course)
 
-col1, col2, col3, col4 = st.columns(len(list(distances_options.keys())))
+races = list(distances_options.keys())
+col1, col2, col3, col4 = st.columns(len(races))
 
 # Dictionnaire pour stocker l'état des cases à cocher
 selected_courses = {}
 
+
 # Afficher les cases à cocher dans les colonnes
 with col1:
-    selected_courses[distances_options.keys()[0]] = st.checkbox(distances_options.keys()[0])
+    selected_courses[races[0]] = st.checkbox(races[0])
 with col2:
-    selected_courses[distances_options.keys()[1]] = st.checkbox(distances_options.keys()[1])
+    selected_courses[races[1]] = st.checkbox(races[1])
 with col3:
-    selected_courses[distances_options.keys()[2]] = st.checkbox(distances_options.keys()[2])
+    selected_courses[races[2]] = st.checkbox(races[2])
 with col4:
-    selected_courses[distances_options.keys()[3]] = st.checkbox(distances_options.keys()[3])
+    selected_courses[races[3]] = st.checkbox(races[3])
 
 # Obtenir la liste des courses sélectionnées
 selected_courses_list = [course for course, selected in selected_courses.items() if selected]
