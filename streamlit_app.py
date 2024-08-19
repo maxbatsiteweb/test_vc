@@ -361,7 +361,13 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
  
 
         #ouvrir la page du site web
-        webbrowser.open_new_tab("https://maximebataille-trailrunning.fr/")
+        def nav_to(url):
+           nav_script = """
+               <meta http-equiv="refresh" content="0; url='%s'">
+           """ % (url)
+                    
+        st.write(nav_script, unsafe_allow_html=True)
+        nav_to("https://maximebataille-trailrunning.fr/")
 
                                  
 else:
