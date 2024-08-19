@@ -117,7 +117,6 @@ else:
                                     seconds = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course}_seconds")
                         
                         results[course] = (hours, minutes, seconds)
-                        st.write(distance
                         seconds_race, speed = calculate_speed_safe(distance, hours, minutes, seconds)
                         total_seconds.append(seconds_race)
                         speeds.append(speed)        
