@@ -313,8 +313,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
     
         subject = "Tes estimations de temps du 5km au Marathon avec la loi de Puissance"
         sender_email = "maximebataille.trailrunning@gmail.com"
-        password = "upqm tezg vljv zhuh"
-        password = "22a7u6kK!"
+        password = "upqm tezg vljv zhuh" #95
+        password = "rkvn fkyc yljb ihew" #trailrunning
         
         # Create a multipart message and set headers
         message = MIMEMultipart('alternative')
