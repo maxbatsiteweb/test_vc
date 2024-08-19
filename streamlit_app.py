@@ -23,16 +23,15 @@ from email.mime.image import MIMEImage
 
 import base64
 
-# Add custom CSS to hide the GitHub icon
-st.markdown(
-    r"""
-    <style>
-    .stDeployButton {
-            visibility: hidden;
-        }
-    </style>
-    """, unsafe_allow_html=True
-)
+# CSS pour masquer le lien GitHub et le footer
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 st.image("logo.png", width=150)
 
