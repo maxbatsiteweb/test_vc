@@ -1,7 +1,5 @@
 import streamlit as st
 
-st.set_option('ui.hide_streamlit_markings', True)
-
 from datetime import datetime, timedelta
 import email, smtplib, ssl
 
