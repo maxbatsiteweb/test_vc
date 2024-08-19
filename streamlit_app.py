@@ -207,7 +207,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         fig.update_layout(
             xaxis=dict(
                 title='Temps (minutes)',
-                range=[0, max(time)],  # Limites de l'axe x
+                range=[0, max(time/60)],  # Limites de l'axe x
                 tick0=0,  # Début des ticks
                 dtick=20,  # Granularité des ticks
                 zeroline=True,  # Ligne zéro
@@ -215,7 +215,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 zerolinewidth=2,  # Largeur de la ligne zéro
                 zerolinecolor='black',  # Couleur de la ligne zéro
                 tickformat='%d',  # Format des ticks en entier
-                ticktext=[f'{int(val / 60)}' for val in np.arange(0, max(time) + 1, 1200)]  # Labels divisés par 60
             ),
             yaxis=dict(
                 title='Vitesse (m/s)',
