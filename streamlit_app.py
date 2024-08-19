@@ -100,24 +100,22 @@ selected_courses_list = [course for course, selected in selected_courses.items()
 if len(selected_courses_list) < 2:
     st.error("Veuillez sélectionner au moins deux courses.")
 else:
-    results = {}
-    total_seconds = []
-    speeds = []
-    for course in selected_courses_list:
-            st.write(f"**{course}**")
-                    
-            # Entrée des heures, minutes, secondes
-            distance = distances_options[course]
-            hours = st.number_input(f"Heures", max_value=23, value=0, key=f"{course}_hours")
-            minutes = st.number_input(f"Minutes", min_value=0, max_value=59, value=0, key=f"{course}_minutes")
-            seconds = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course}_seconds")
-            
-            results[course] = (hours, minutes, seconds)
-            seconds, speed = calculate_speed_safe(distance, hours, minutes, seconds)
-            total_seconds.append(seconds)
-            speeds.append(speed)        
-
-
+            results = {}
+            total_seconds = []
+            speeds = []
+                for course in selected_courses_list:
+                        st.write(f"**{course}**")
+                                
+                        # Entrée des heures, minutes, secondes
+                        distance = distances_options[course]
+                        hours = st.number_input(f"Heures", max_value=23, value=0, key=f"{course}_hours")
+                        minutes = st.number_input(f"Minutes", min_value=0, max_value=59, value=0, key=f"{course}_minutes")
+                        seconds = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course}_seconds")
+                        
+                        results[course] = (hours, minutes, seconds)
+                        seconds, speed = calculate_speed_safe(distance, hours, minutes, seconds)
+                        total_seconds.append(seconds)
+                        speeds.append(speed)        
 
             if 0 not in total_seconds:
                 # Réaliser la régression linéaire avec Scikit-learn
