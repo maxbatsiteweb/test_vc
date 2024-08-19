@@ -396,4 +396,4 @@ else:
             
                                              
             else:
-                st.warning("Veuillez entrer des valeurs valides pour les deux courses (temps non nul).")
+                st.warning("Veuillez entrer des temps non nuls pour toutes les courses.")
