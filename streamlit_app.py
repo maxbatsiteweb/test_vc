@@ -209,13 +209,13 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 title='Temps (minutes)',
                 range=[0, max(time)],  # Limites de l'axe x
                 tick0=0,  # Début des ticks
-                dtick=1200,  # Granularité des ticks
+                dtick=20,  # Granularité des ticks
                 zeroline=True,  # Ligne zéro
                 showline=True,  # Afficher la ligne de l'axe
                 zerolinewidth=2,  # Largeur de la ligne zéro
                 zerolinecolor='black',  # Couleur de la ligne zéro
                 tickformat='%d',  # Format des ticks en entier
-                ticktext=[f'{int(val / 3600)}' for val in np.arange(0, max(time) + 1, 1200)]  # Labels divisés par 60
+                ticktext=[f'{int(val / 60)}' for val in np.arange(0, max(time) + 1, 1200)]  # Labels divisés par 60
             ),
             yaxis=dict(
                 title='Vitesse (m/s)',
