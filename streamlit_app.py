@@ -366,7 +366,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                <meta http-equiv="refresh" content="0; url='%s'">
            """ % (url)
                     
-        st.write(nav_script, unsafe_allow_html=True)
         nav_to("https://maximebataille-trailrunning.fr/")
 
                                  
