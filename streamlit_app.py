@@ -24,7 +24,7 @@ from email.mime.image import MIMEImage
 
 import base64
 
-import webbrowser
+from streamlit_javascript import st_javascript
 
 # CSS pour masquer le lien GitHub et le footer
 hide_streamlit_style = """
