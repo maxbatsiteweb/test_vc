@@ -68,6 +68,12 @@ def calculate_speed(distance, hours, minutes, seconds):
 # Sélection des distances
 st.write("# Choix des courses")
 
+# Créer les cases à cocher
+selected_courses = []
+for course in courses.distances_options():
+    if st.checkbox(course):
+        selected_courses.append(course)
+
 # Utilisation des colonnes pour afficher les inputs côte à côte
 # Course 1
 col1, col2, col3, col4 = st.columns(4)
