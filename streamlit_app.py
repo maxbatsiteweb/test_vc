@@ -69,10 +69,7 @@ def calculate_speed(distance, hours, minutes, seconds):
 st.write("# Choix des courses")
 
 # Créer les cases à cocher
-selected_courses = []
-for course in distances_options.keys():
-    if st.checkbox(course):
-        selected_courses.append(course)
+
 
 races = list(distances_options.keys())
 col1, col2, col3, col4 = st.columns(len(races))
