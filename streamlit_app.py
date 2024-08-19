@@ -18,6 +18,10 @@ import plotly.graph_objects as go
 
 import os
 
+from email.mime.image import MIMEImage
+
+import base64
+
 st.image("logo.png", width=150)
 
 st.title("Estimation des temps par la loi de Puissance")
@@ -211,7 +215,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                 zerolinewidth=2,  # Largeur de la ligne zéro
                 zerolinecolor='black',  # Couleur de la ligne zéro
                 tickformat='%d',  # Format des ticks en entier
-                ticktext=[f'{int(val / 60)}' for val in np.arange(0, max(time) + 1, 1200)]  # Labels divisés par 60
+                ticktext=[f'{int(val / 3600)}' for val in np.arange(0, max(time) + 1, 1200)]  # Labels divisés par 60
             ),
             yaxis=dict(
                 title='Vitesse (m/s)',
@@ -237,7 +241,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
         st.write(os.listdir())
 
-        import base64
+        
 
         # Lire l'image et la convertir en base64
         with open("power_law.png", "rb") as image_file:
@@ -245,9 +249,9 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
         st.write(base64_image)
 
-        ### Partie Mail
+        ### Partie Mail pour utilisateur
 
-        from email.mime.image import MIMEImage
+        
 
 
         # Créer le corps du mail avec des éléments HTML
@@ -335,6 +339,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, text)
+
+        
        
  
                            
