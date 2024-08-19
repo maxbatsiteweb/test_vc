@@ -266,7 +266,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
             Ces estimations sont basées sur la loi de Puissance.<br><br>
             
-            C'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses</p>
+            C'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses.</p>
 
             <!-- Estimations de Temps -->
             <h4>Tes estimations:</h4>
@@ -289,7 +289,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             <br>
 
             <p><div style="margin: 0; padding: 0;">Maxime</div>
-            <div style="margin: 0; padding: 0;"><i>Entraineur de trail-running indépendant, Data Scientist</i></div></p>
+            <div style="margin: 0; padding: 0;"><i>Entraineur de trail-running, Data Scientist</i></div></p>
 
             <br>
 
