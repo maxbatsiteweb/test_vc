@@ -350,10 +350,10 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             
         st.write("Vérifie ta boîte mail !")
  
-        html = <div style="text-align: center;">
+        html = f"""<div style="text-align: center;">
                 "![Alt Text](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExemVtdTRkZTRnMHN5Z3oycjBvNmI5YjA2aHlpZXo3bHRubmNvNWs1NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3owyoTHcCsmo5o43tK/giphy.gif)"
-                 </div>
-        st.markdown(html_code, unsafe_allow_html=True)
+                 </div>"""
+        st.markdown(html, unsafe_allow_html=True)
 
 
 
