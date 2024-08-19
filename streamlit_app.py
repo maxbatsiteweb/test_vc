@@ -117,8 +117,9 @@ else:
                                     seconds = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course}_seconds")
                         
                         results[course] = (hours, minutes, seconds)
-                        seconds, speed = calculate_speed_safe(distance, hours, minutes, seconds)
-                        total_seconds.append(seconds)
+                        st.write(distance
+                        seconds_race, speed = calculate_speed_safe(distance, hours, minutes, seconds)
+                        total_seconds.append(seconds_race)
                         speeds.append(speed)        
 
             if 0 not in total_seconds:
@@ -157,18 +158,16 @@ else:
             
                 # Afficher les résultats dans les colonnes
                 with col1:
-                        st.header("Ligne 1")
                         for course, speed, total_second in zip(selected_courses_list[:2], speeds[:2], total_seconds[:2]):  # Les deux premiers résultats
             
-                            st.write(f"{course}")
+                            st.write(f"**{course}**")
                             st.write(f"Vitesse : {speed:.2f} m/s, {(speed * 3.6):.2f} km/h")
                             st.write(f"Allure : {calculate_pace(total_second, distances_options[course])}")
                             st.write("---")  # Séparateur pour les résultats
             
                 with col2:
-                        st.header("Ligne 2")
                         for course, speed, total_second in zip(selected_courses_list[2:], speeds[2:], total_seconds[2:]):  # Les deux derniers résultats
-                            st.write(f"{course}")
+                            st.write(f"**{course}**")
                             st.write(f"Vitesse : {speed:.2f} m/s, {(speed * 3.6):.2f} km/h")
                             st.write(f"Allure : {calculate_pace(total_second, distances_options[course])}")
                             st.write("---")  # Séparateur pour les résultats
