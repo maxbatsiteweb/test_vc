@@ -23,6 +23,14 @@ from email.mime.image import MIMEImage
 
 import base64
 
+# Add custom CSS to hide the GitHub icon
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
 st.image("logo.png", width=150)
 
 st.title("Estimation des temps par la loi de Puissance")
