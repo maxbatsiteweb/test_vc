@@ -237,14 +237,10 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             margin=dict(l=50, r=20, t=40, b=40)  # Marges : gauche, droite, haut, bas
         )
                 
-        st.plotly_chart(fig)
 
         # Sauvegarder le graphique en tant qu'image PNG
         fig.write_image("power_law.png", format='png')
 
-        st.write(os.listdir())
-
-        
 
         # Lire l'image et la convertir en base64
         with open("power_law.png", "rb") as image_file:
@@ -253,9 +249,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         st.write(base64_image)
 
         ### Partie Mail pour utilisateur
-
-        
-
 
         # Créer le corps du mail avec des éléments HTML
         body = f"""
@@ -267,7 +260,10 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
             Ces estimations sont basées sur la loi de Puissance.<br><br>
             
-            C'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses.</p>
+            C'est une très bonne estimation objective de ton potentiel et de ce que tu peux viser sur tes prochaines courses.<br><br>
+            
+            Une question ? répond directement à ce mail.
+            </p>
 
             <!-- Estimations de Temps -->
             <h4>Tes estimations:</h4>
