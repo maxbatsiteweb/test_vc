@@ -103,7 +103,7 @@ else:
             results = {}
             total_seconds = []
             speeds = []
-                for course in selected_courses_list:
+            for course in selected_courses_list:
                         st.write(f"**{course}**")
                                 
                         # Entrée des heures, minutes, secondes
