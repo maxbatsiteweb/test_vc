@@ -362,9 +362,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
         #ouvrir la page du site web
         def nav_to(url):
-           nav_script = """
-               <meta http-equiv="refresh" content="0; url='%s'">
-           """ % (url)
+                js = f'window.open("{url}", "_blank").then(r => window.parent.location.href);'
+                st_javascript(js)
                     
         nav_to("https://maximebataille-trailrunning.fr/")
 
