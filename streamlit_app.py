@@ -355,8 +355,8 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
                     window.open("https://maximebataille-trailrunning.fr/", "_blank");
                 </script>
                 """
-                # Afficher le lien HTML avec markdown en autorisant le HTML brut
-                st.markdown(js_code, unsafe_allow_html=True)
+        # Afficher le lien HTML avec markdown en autorisant le HTML brut
+        st.markdown(js_code, unsafe_allow_html=True)
 
         
        
