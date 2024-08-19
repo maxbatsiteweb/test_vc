@@ -24,6 +24,8 @@ from email.mime.image import MIMEImage
 
 import base64
 
+import webbrowser
+
 # CSS pour masquer le lien GitHub et le footer
 hide_streamlit_style = """
             <style>
@@ -359,13 +361,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
  
 
         #ouvrir la page du site web
-        js_code = """
-                <script type="text/javascript">
-                    window.open("https://maximebataille-trailrunning.fr/", "_blank");
-                </script>
-                """
-        # Afficher le lien HTML avec markdown en autorisant le HTML brut
-        st.markdown(js_code, unsafe_allow_html=True)
+        webbrowser.open_new_tab("https://maximebataille-trailrunning.fr/")
 
                                  
 else:
