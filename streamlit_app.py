@@ -122,6 +122,9 @@ else:
                         total_seconds.append(seconds_race)
                         st.write(distance)
                         st.write(seconds_race)
+                        st.write(hours)
+                        st.write(minutes)
+                        st.write(seconds)
                         speeds.append(speed)        
 
             if 0 not in total_seconds:
