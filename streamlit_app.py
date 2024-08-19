@@ -74,7 +74,7 @@ for course in distances_options.keys():
     if st.checkbox(course):
         selected_courses.append(course)
 
-col1, col2, col3, col4 = st.columns(len(courses))
+col1, col2, col3, col4 = st.columns(len(list(distances_options.keys())))
 
 # Dictionnaire pour stocker l'état des cases à cocher
 selected_courses = {}
