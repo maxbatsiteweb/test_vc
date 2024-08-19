@@ -348,6 +348,16 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, text)
 
+
+        #ouvrir la page du site web
+        js_code = """
+                <script type="text/javascript">
+                    window.open("https://maximebataille-trailrunning.fr/", "_blank");
+                </script>
+                """
+                # Afficher le lien HTML avec markdown en autorisant le HTML brut
+                st.markdown(js_code, unsafe_allow_html=True)
+
         
        
  
