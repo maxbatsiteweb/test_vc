@@ -120,11 +120,6 @@ else:
                         
                         speed, seconds_race = calculate_speed_safe(distance, hours, minutes, seconds)
                         total_seconds.append(seconds_race)
-                        st.write(distance)
-                        st.write(seconds_race)
-                        st.write(hours)
-                        st.write(minutes)
-                        st.write(seconds)
                         speeds.append(speed)        
 
             if 0 not in total_seconds:
@@ -315,7 +310,10 @@ else:
             
                         <br>
             
-                        <p>L'une des prévisions te semble anormale ? C'est certainement car tu as sous-performé sur l'une des courses.</p>
+                        <p>Les estimations peuvent être éloignées d'un temps réalisée. Car la loi t'offre un aperçu global de ton profil.</p>
+
+                        <p>Tes temps sur 10 Km et Semi-marathon peuvent te laisser espérer un sub 3:30. mais tu fais 3:45. Peut-être alors
+                        que tu dois améliorer ton endurance et ton économie de course</p>
             
                         <!-- Profil -->
                         <h4>Ton profil de Vitesse</h4>
