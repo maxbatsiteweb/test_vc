@@ -1,3 +1,4 @@
+
 import streamlit as st
 
 from datetime import datetime, timedelta
@@ -348,12 +349,16 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             server.sendmail(sender_email, receiver_email, text)
 
             
-        st.write("Vérifie ta boîte mail !")
+        st.write("Vérifie ta boîe mail")
+
+        html_code = """
+            <div style="text-align: center;">
+                <p>Vérifie ta boîe mail</p>
+            </div>
+            """
+        st.markdown(html_code, unsafe_allow_html=True)
  
-        html = f"""<div style="text-align: center;">
-                "![Alt Text](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExemVtdTRkZTRnMHN5Z3oycjBvNmI5YjA2aHlpZXo3bHRubmNvNWs1NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3owyoTHcCsmo5o43tK/giphy.gif)"
-                 </div>"""
-        st.markdown(html, unsafe_allow_html=True)
+
 
 
 
