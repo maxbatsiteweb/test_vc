@@ -162,7 +162,7 @@ else:
             
                             st.write(f"{course}")
                             st.write(f"Vitesse : {speed:.2f} m/s, {(speed * 3.6):.2f} km/h")
-                            st.write(f"Allure : {calculate_pace(total_seconds, distances_options[course])}")
+                            st.write(f"Allure : {calculate_pace(total_second, distances_options[course])}")
                             st.write("---")  # Séparateur pour les résultats
             
                 with col2:
@@ -170,7 +170,7 @@ else:
                         for course, speed, total_second in zip(selected_courses_list[2:], speeds[2:], total_seconds[2:]):  # Les deux derniers résultats
                             st.write(f"{course}")
                             st.write(f"Vitesse : {speed:.2f} m/s, {(speed * 3.6):.2f} km/h")
-                            st.write(f"Allure : {calculate_pace(total_seconds, distances_options[course])}")
+                            st.write(f"Allure : {calculate_pace(total_second, distances_options[course])}")
                             st.write("---")  # Séparateur pour les résultats
                 
             
