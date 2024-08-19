@@ -98,7 +98,7 @@ def calculate_speed_safe(distance, hours, minutes, seconds):
 selected_courses_list = [course for course, selected in selected_courses.items() if selected]
 
 if len(selected_courses_list) < 2:
-    st.error("Veuillez sélectionner au moins deux courses.")
+    st.error("Sélectionne au moins deux courses.")
 else:
             results = {}
             total_seconds = []
@@ -394,4 +394,4 @@ else:
             
                                              
             else:
-                st.warning("Veuillez entrer des temps non nuls pour toutes les courses.")
+                st.warning("Insère des temps non nuls pour toutes les courses.")
