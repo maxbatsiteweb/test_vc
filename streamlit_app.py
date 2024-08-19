@@ -119,7 +119,7 @@ else:
 
 
 
-            if 0 in total_seconds:
+            if 0 not in total_seconds:
                 # Réaliser la régression linéaire avec Scikit-learn
                 X = np.log(np.array(total_seconds)).reshape(-1, 1)
                 y = np.log(np.array(speeds))
