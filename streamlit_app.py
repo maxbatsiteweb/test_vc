@@ -286,12 +286,12 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
             <br>
 
+            <p>L'une des prévisions te semble anormale ? C'est certainement car tu as sous-performé sur l'une des courses.</p>
+
             <!-- Profil -->
             <h4>Ton profil de Vitesse</h4>
 
             <img src="cid:Mailtrapimage", alt="Graphique", style="width: auto; height: 450px">
-
-            
 
             <br>
 
@@ -352,15 +352,11 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
         html_code = """
             <div style="text-align: center;">
-                <p>Vérifie ta boîe mail</p>
+                <p>Vérifie ta boîte mail</p>
             </div>
             """
         st.markdown(html_code, unsafe_allow_html=True)
  
-
-
-
-
 
         #ouvrir la page du site web
         js_code = """
