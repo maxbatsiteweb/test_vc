@@ -312,8 +312,11 @@ else:
             
                         <p>Les estimations peuvent être éloignées d'un temps réalisé. Car la loi t'offre un aperçu global de ton profil.</p>
 
-                        <p>Tes temps sur 10 Km et Semi-marathon peuvent te laisser espérer un sub 3:30 sur marathon ? Mais tu fais 3:45 ? Alors peut-être
-                        que tu dois améliorer ton endurance et ton économie de course</p>
+                        <p>Tes temps sur 10 Km et Semi-marathon peuvent te laisser espérer un sub 3:30 sur marathon ?
+                        Mais tu fais 3:45 ?
+                        Alors peut-être que tu dois améliorer ton endurance et ton économie de course.</p>
+
+                        <p>Découvre ci-dessous ton profil de vitesse.</p>
             
                         <!-- Profil -->
                         <h4>Ton profil de Vitesse</h4>
