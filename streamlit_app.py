@@ -163,22 +163,24 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Créer une case à cocher
         checkbox = st.checkbox("J’accepte de recevoir par email mes estimations de temps de course et des newletters")
 
-        if st.button('Valider'):
-            st.session_state.button_clicked = True
-
-            # Vérifier si la case est cochée
-            if not checkbox:
-                # Afficher un message d'avertissement si la case n'est pas cochée
-                st.warning("Veuillez cocher la case pour continuer.")
-            elif receiver_email is None:
-                    st.warning("Veuillez remplir le mail.")
-            elif receiver_name is None:
-                    st.warning("Veuillez remplir le prénom.")
-            else:
-                mail_to_be_sent = True
-                st.session_state.button_clicked = False
-                st.session_state.receiver_email = None
-                st.session_state.receiver_name = None
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:    
+                    if st.button('Valider'):
+                        st.session_state.button_clicked = True
+            
+                        # Vérifier si la case est cochée
+                        if not checkbox:
+                            # Afficher un message d'avertissement si la case n'est pas cochée
+                            st.warning("Veuillez cocher la case pour continuer.")
+                        elif receiver_email is None:
+                                st.warning("Veuillez remplir le mail.")
+                        elif receiver_name is None:
+                                st.warning("Veuillez remplir le prénom.")
+                        else:
+                            mail_to_be_sent = True
+                            st.session_state.button_clicked = False
+                            st.session_state.receiver_email = None
+                            st.session_state.receiver_name = None
                 
     if mail_to_be_sent:   
         predictions = {}
@@ -347,9 +349,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, text)
-
-            
-        st.write("Vérifie ta boîe mail")
 
         html_code = """
             <div style="text-align: center;">
