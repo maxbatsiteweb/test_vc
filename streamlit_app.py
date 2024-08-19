@@ -349,10 +349,10 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
             
         st.write("Envoyé !")
-        gif_url = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExemVtdTRkZTRnMHN5Z3oycjBvNmI5YjA2aHlpZXo3bHRubmNvNWs1NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3owyoTHcCsmo5o43tK/giphy.gif"
+ 
 
-        # Afficher le GIF
-        st.image(gif_url, format='GIF')
+        st.markdown("![Alt Text](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExemVtdTRkZTRnMHN5Z3oycjBvNmI5YjA2aHlpZXo3bHRubmNvNWs1NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3owyoTHcCsmo5o43tK/giphy.gif)")
+
 
 
 
