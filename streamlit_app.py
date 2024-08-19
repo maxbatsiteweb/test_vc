@@ -174,7 +174,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             elif receiver_name is None:
                     st.warning("Veuillez remplir le prénom.")
             else:
-                st.write("Envoyé !")
                 mail_to_be_sent = True
                 st.session_state.button_clicked = False
                 st.session_state.receiver_email = None
@@ -347,6 +346,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, text)
+            st.write("Envoyé !")
 
 
         #ouvrir la page du site web
