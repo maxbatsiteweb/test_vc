@@ -189,11 +189,14 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
 
         speed_races = np.array([power_law(t, S_opt, E_opt) for t in predictions_secondes.values()])
 
+        time_in_minutes = [t/60 for t in time]
+        predictions_in_minutes = [t/60 for t in predictions_secondes.values()]
+
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=time, y=speed, mode='lines', line=dict(color='#0B1F52')))
+        fig.add_trace(go.Scatter(x=time_in_minutes, y=speed, mode='lines', line=dict(color='#0B1F52')))
         
         
-        fig.add_trace(go.Scatter(x=list(predictions_secondes.values()),
+        fig.add_trace(go.Scatter(x=predictions_in_minutes,
                                  y=speed_races,
                                  mode='markers+text',
                                  marker_color='#83FFC0',
@@ -207,7 +210,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         fig.update_layout(
             xaxis=dict(
                 title='Temps (minutes)',
-                range=[0, max(time/60)],  # Limites de l'axe x
+                range=[0, max(time_in_minutes)],  # Limites de l'axe x
                 tick0=0,  # Début des ticks
                 dtick=20,  # Granularité des ticks
                 zeroline=True,  # Ligne zéro
