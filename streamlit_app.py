@@ -108,9 +108,13 @@ else:
                                 
                         # Entrée des heures, minutes, secondes
                         distance = distances_options[course]
-                        hours = st.number_input(f"Heures", max_value=23, value=0, key=f"{course}_hours")
-                        minutes = st.number_input(f"Minutes", min_value=0, max_value=59, value=0, key=f"{course}_minutes")
-                        seconds = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course}_seconds")
+                        col1, col2, col3 = st.columns(3)
+                        with col1:
+                                    hours = st.number_input(f"Heures", max_value=23, value=0, key=f"{course}_hours")
+                        with col2:
+                                    minutes = st.number_input(f"Minutes", min_value=0, max_value=59, value=0, key=f"{course}_minutes")
+                        with col3:
+                                    seconds = st.number_input(f"Secondes", min_value=0, max_value=59, value=0, key=f"{course}_seconds")
                         
                         results[course] = (hours, minutes, seconds)
                         seconds, speed = calculate_speed_safe(distance, hours, minutes, seconds)
