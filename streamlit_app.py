@@ -118,7 +118,7 @@ else:
                         
                         results[course] = (hours, minutes, seconds)
                         
-                        speed, total_seconds = calculate_speed_safe(distance, hours, minutes, seconds)
+                        speed, seconds_race = calculate_speed_safe(distance, hours, minutes, seconds)
                         total_seconds.append(seconds_race)
                         st.write(distance)
                         st.write(seconds_race)
