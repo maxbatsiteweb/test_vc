@@ -85,6 +85,15 @@ with col3:
 with col4:
     selected_courses[races[3]] = st.checkbox(races[3])
 
+# Vérification avant de calculer les vitesses
+def calculate_speed_safe(distance, hours, minutes, seconds):
+    total_seconds = hours * 3600 + minutes * 60 + seconds
+    if total_seconds > 0:
+        speed = distance / total_seconds
+    else:
+        speed = 0
+    return speed, total_seconds
+
 # Obtenir la liste des courses sélectionnées
 selected_courses_list = [course for course, selected in selected_courses.items() if selected]
 
@@ -110,18 +119,9 @@ else:
 
         
 
-# Vérification avant de calculer les vitesses
-def calculate_speed_safe(distance, hours, minutes, seconds):
-    total_seconds = hours * 3600 + minutes * 60 + seconds
-    if total_seconds > 0:
-        speed = distance / total_seconds
-    else:
-        speed = 0
-    return speed, total_seconds
 
-# Calcul des vitesses et temps avec vérification
-speed_1, total_seconds_1 = calculate_speed_safe(distances_options[distance_1], hours_1, minutes_1, seconds_1)
-speed_2, total_seconds_2 = calculate_speed_safe(distances_options[distance_2], hours_2, minutes_2, seconds_2)
+
+
 
 if 0 in total_seconds:
     # Réaliser la régression linéaire avec Scikit-learn
