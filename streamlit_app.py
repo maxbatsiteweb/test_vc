@@ -70,7 +70,7 @@ st.write("# Choix des courses")
 
 # Créer les cases à cocher
 selected_courses = []
-for course in courses.distances_options():
+for course in distances_options.keys():
     if st.checkbox(course):
         selected_courses.append(course)
 
