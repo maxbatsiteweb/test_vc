@@ -175,7 +175,7 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
             elif receiver_name is None:
                     st.warning("Veuillez remplir le prénom.")
             else:
-                st.write("Envoyé")
+                st.write("Envoyé !")
                 mail_to_be_sent = True
                 st.session_state.button_clicked = False
                 st.session_state.receiver_email = None
@@ -256,8 +256,6 @@ if total_seconds_1 > 0 and total_seconds_2 > 0:
         # Lire l'image et la convertir en base64
         with open("power_law.png", "rb") as image_file:
             base64_image = base64.b64encode(image_file.read()).decode('utf-8')
-
-        st.write(base64_image)
 
         ### Partie Mail pour utilisateur
 
