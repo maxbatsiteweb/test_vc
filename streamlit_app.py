@@ -190,6 +190,13 @@ else:
                     col1, col2, col3 = st.columns([1, 2, 1])
                     with col2:    
                                 if st.button('Valider', use_container_width=True):
+
+                                    
+                                    st.write(
+                                        "Retrouve moi sur [Instagram](https://www.instagram.com/maxbataille.coachtrailrunning/) |
+                                        [Site Web](https://maximebataille-trailrunning.fr/)|
+                                        [Linkedin](https://www.linkedin.com/in/maxime-bataille-data/)       "
+                                    )
                                     st.session_state.button_clicked = True
                         
                                     # Vérifier si la case est cochée
