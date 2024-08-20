@@ -193,9 +193,7 @@ else:
 
                                     
                                     st.write(
-                                        "Retrouve moi sur [Instagram](https://www.instagram.com/maxbataille.coachtrailrunning/) |
-                                        [Site Web](https://maximebataille-trailrunning.fr/)|
-                                        [Linkedin](https://www.linkedin.com/in/maxime-bataille-data/)       "
+                                        "Retrouve moi sur [Instagram](https://www.instagram.com/maxbataille.coachtrailrunning/) | [Site Web](https://maximebataille-trailrunning.fr/)| [Linkedin](https://www.linkedin.com/in/maxime-bataille-data/)"
                                     )
                                     st.session_state.button_clicked = True
                         
