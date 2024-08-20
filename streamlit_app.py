@@ -48,6 +48,9 @@ st.write("Indique au moins deux courses durant lesquelles tu as donné ton maxim
 
 st.write("Tu recevras par e-mail les estimations de performance sur 5km, 10km, semi-marathon et marathon. Vérifie tes spams.")
 
+st.write("Vérifie tes spams et retrouve moi sur [Instagram](https://www.instagram.com/maxbataille.coachtrailrunning/) | [Site Web](https://maximebataille-trailrunning.fr/)| [Linkedin](https://www.linkedin.com/in/maxime-bataille-data/)"
+                                    )
+
 
 
 
@@ -192,9 +195,7 @@ else:
                                 if st.button('Valider', use_container_width=True):
 
                                     
-                                    st.write(
-                                        "Retrouve moi sur [Instagram](https://www.instagram.com/maxbataille.coachtrailrunning/) | [Site Web](https://maximebataille-trailrunning.fr/)| [Linkedin](https://www.linkedin.com/in/maxime-bataille-data/)"
-                                    )
+                                    
                                     st.session_state.button_clicked = True
                         
                                     # Vérifier si la case est cochée
